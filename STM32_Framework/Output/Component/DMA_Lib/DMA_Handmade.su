@@ -1,0 +1,2 @@
+Component/DMA_Lib/DMA_Handmade.c:8:13:DMA_Init	8	static
+Component/DMA_Lib/DMA_Handmade.c:61:13:DMA_Start	8	static

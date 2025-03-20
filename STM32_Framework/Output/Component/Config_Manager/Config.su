@@ -1,0 +1,5 @@
+Component/Config_Manager/Config.c:3:10:strlen_custom	0	static
+Component/Config_Manager/Config.c:11:6:uint16_to_char	24	static
+Component/Config_Manager/Config.c:34:6:memset_custom	0	static
+Component/Config_Manager/Config.c:44:6:InitDataToESP32	80	static
+Component/Config_Manager/Config.c:78:6:InitGPIO_Control_Device	24	static
