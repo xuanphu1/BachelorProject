@@ -7,8 +7,11 @@
 #include "RTClib.h"
 #include <WiFiUdp.h>
 #include <NTPClient.h>
+#include "Project_Manager.h"
 
-Flag_Signal_Control_t FlagControl;
+
+
+Flag_Signal_Control_t FlagControl = {.Flag_End_OTA = 1};
 RTC_DS1307 rtc; // Khởi tạo RTC
 unsigned long previousMillisRTC = 0;
 const long intervalRTC = 1000; // Cập nhật mỗi 1000ms (1 giây)
@@ -82,6 +85,11 @@ ERA_WRITE(V11) { // Filter
 
 }
 
+ERA_WRITE(V12) { // Request OTA
+  FlagControl.Flag_Request_OTA  = param.getInt();
+  if (1 == FlagControl.Flag_Request_OTA) deviceManager.modeActive = OTA_MODE;
+}
+
 
 void setup() {
 
@@ -109,8 +117,8 @@ if (!rtc.isrunning()) {
 }
 
 
-Serial.printf("ERa đang kết nối wifi %s ...", ssid);
-ERa.begin(ssid, password);  
+Serial.printf("ERa đang kết nối wifi %s ...\n", ssid_era);
+ERa.begin(ssid_era, password_era);  
 if (WiFi.status() == WL_CONNECTED) {
     timeClient.begin();
     Serial.println("Đã khởi động NTP.");
@@ -141,7 +149,7 @@ if (WiFi.status() == WL_CONNECTED) {
   ERa.virtualWrite(V9,0);
   ERa.virtualWrite(V10,0);
   ERa.virtualWrite(V11,deviceManager.set_Auto);
-
+  ERa.virtualWrite(V12,FlagControl.Flag_Request_OTA);
   Serial.println("Setup done");
 
 
@@ -272,9 +280,7 @@ void loop() {
                                                                     atoi(dataManager.Water_Capacity),
                                                                     atoi(dataManager.CONDUCT_Value));
   }
-
-
-
+    ERa.virtualWrite(V12,FlagControl.Flag_Request_OTA);
   lv_label_set_text(ui_DoDucValue,dataManager.CONDUCT_Value);
 
   lv_label_set_text(ui_Phvalue,dataManager.PH_Value);
