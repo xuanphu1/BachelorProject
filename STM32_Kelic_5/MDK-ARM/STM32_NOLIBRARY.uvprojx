@@ -48,7 +48,7 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>STM32_NOLIBRARY\</OutputDirectory>
+          <OutputDirectory>.\STM32_NOLIBRARY\</OutputDirectory>
           <OutputName>STM32_NOLIBRARY</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>

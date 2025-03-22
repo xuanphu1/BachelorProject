@@ -1,6 +1,9 @@
 #include "stdint.h"
 
+/* Định nghĩa VTOR thông qua địa chỉ */
+#define VTOR (*((volatile uint32_t *)0xE000ED08))
 
+/* Các symbol được định nghĩa trong linker script */
 extern uint32_t _etext;
 extern uint32_t _sdata;
 extern uint32_t _edata;
@@ -8,9 +11,10 @@ extern uint32_t _ebss;
 extern uint32_t _sbss;
 extern uint32_t _estack;
 
-#ifdef LOAD_TO_FLASH
-    extern uint32_t _la_data;
-#endif  /* LOAD_TO_FLASH */
+extern uint32_t _sisr;   // Bắt đầu VMA của bảng vector trong RAM
+extern uint32_t _eisr;   // Kết thúc VMA của bảng vector
+extern uint32_t _la_isr; // Địa chỉ tải (LMA) của bảng vector trong FLASH
+extern uint32_t _la_data; // Địa chỉ tải của section .data trong FLASH
 
 int main(void);
 
@@ -168,24 +172,35 @@ volatile uint32_t vectors[] __attribute__((section(".isr_vector"))) = {
 };
 
 
-void Reset_Handler(void){
-    #ifdef LOAD_TO_FLASH
-    uint32_t size = (uint32_t)&_edata - (uint32_t)&_sdata;
-    uint8_t *pDst = (uint8_t*)&_sdata;
-    uint8_t *pSrc = (uint8_t*)&_la_data;
-
-    for (uint32_t i = 0; i < size; i++){
-        *pDst++ = *pSrc++;
-    }
-
-    size = (uint32_t)&_ebss - (uint32_t)&_sbss;
-    pDst = (uint8_t*)&_sbss;
-    for (uint32_t i = 0; i < size; i++){
-        *pDst++ = 0;
-    }
-    #endif
-
-    main();
+void Reset_Handler(void) {
+        /* Copy dữ liệu .data từ FLASH (LMA) vào RAM (VMA) */
+        uint32_t size = (uint32_t)&_edata - (uint32_t)&_sdata;
+        uint8_t *pDst = (uint8_t*)&_sdata;
+        uint8_t *pSrc = (uint8_t*)&_la_data;
+        for (uint32_t i = 0; i < size; i++){
+            *pDst++ = *pSrc++;
+        }
+    
+        /* Copy bảng vector (.isr_vector) từ FLASH (LMA) sang RAM (VMA) */
+        uint32_t size_isr = (uint32_t)&_eisr - (uint32_t)&_sisr;
+        uint8_t *pDst_Ram = (uint8_t*)&_sisr;      // Đích: VMA của bảng vector trong RAM
+        uint8_t *pSrc_Flash = (uint8_t*)&_la_isr;    // Nguồn: LMA của bảng vector trong FLASH
+        for (uint32_t i = 0; i < size_isr; i++){
+            pDst_Ram[i] = pSrc_Flash[i];
+        }
+    
+        /* Thiết lập VTOR trỏ tới bảng vector trong RAM */
+        VTOR = (uint32_t)&_sisr;
+    
+        /* Xóa vùng bss */
+        size = (uint32_t)&_ebss - (uint32_t)&_sbss;
+        pDst = (uint8_t*)&_sbss;
+        for (uint32_t i = 0; i < size; i++){
+            *pDst++ = 0;
+        }
+    
+        /* Chuyển giao điều khiển cho ứng dụng chính */
+        main();
 }
 
 void Default_Handler()

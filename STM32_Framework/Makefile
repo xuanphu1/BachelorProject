@@ -10,8 +10,7 @@ PROJ_NAME  := STM32_RUN
 CC = arm-none-eabi-gcc
 OBJCOPY = arm-none-eabi-objcopy
 CFLAGS = -mcpu=cortex-m3 -mthumb -Wall -O3 \
-         -ffunction-sections -fdata-sections -fstack-usage --specs=nano.specs \
-         -DLOAD_TO_FLASH
+         -ffunction-sections -fdata-sections -fstack-usage --specs=nano.specs
 LDFLAGS = -T $(LINKER_DIR) -nostartfiles -lc -lgcc -lnosys \
           -Wl,--gc-sections -Wl,-Map=$(OUTPUT_DIR)/firmware.map,--cref
 # Create output directory if it doesn't exist

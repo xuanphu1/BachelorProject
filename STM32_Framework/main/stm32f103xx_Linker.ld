@@ -14,56 +14,61 @@ MEMORY
 
 SECTIONS
 {
-    /* Bảng vector ngắt - Đặt ở đầu Flash */
+    /* Bảng vector ngắt - đặt ở đầu RAM, nhưng dữ liệu nạp từ FLASH */
     .isr_vector :
     {
-        KEEP(*(.isr_vector))   /* Giữ bảng vector */
-    } > FLASH
+        _sisr = .;                         /* VMA của bảng vector */
+        KEEP(*(.isr_vector))                /* Giữ bảng vector */
+        _eisr = .;
+    } > RAM AT> FLASH
 
-    /* Code chương trình */
+    /* Lấy địa chỉ tải (LMA) của bảng vector từ FLASH */
+    _la_isr = LOADADDR(.isr_vector);
+
+    /* Code chương trình nằm trong FLASH */
     .text :
     {
-        *(.text*)       /* Mã lệnh chương trình */
-        *(.rodata*)     /* Dữ liệu chỉ đọc */
+        *(.text*)
+        *(.rodata*)
         . = ALIGN(4);
-        _etext = .;     /* Đánh dấu cuối vùng code */
+        _etext = .;
     } > FLASH
 
-    /* Lưu địa chỉ dữ liệu khởi tạo trong Flash */
+    /* Địa chỉ tải của dữ liệu khởi tạo nằm trong FLASH */
     _la_data = LOADADDR(.data);
 
     /* Vùng dữ liệu đã khởi tạo trong RAM */
     .data :
     {
-        _sdata = .;    /* Bắt đầu dữ liệu đã khởi tạo */
+        _sdata = .;
         *(.data*)
         . = ALIGN(4);
-        _edata = .;    /* Kết thúc dữ liệu đã khởi tạo */
+        _edata = .;
     } > RAM AT> FLASH
 
     /* Biến chưa khởi tạo (bss) */
     .bss :
     {
-        _sbss = .;     /* Bắt đầu biến chưa khởi tạo */
+        _sbss = .;
         *(.bss*)
         *(COMMON)
         . = ALIGN(4);
-        _ebss = .;     /* Kết thúc biến chưa khởi tạo */
+        _ebss = .;
     } > RAM
 
-    /* Heap - Dùng cho malloc() */
+    /* Heap - cho malloc() */
     .heap (NOLOAD) :
     {
         . = ALIGN(8);
-        _sheap = .;    /* Bắt đầu Heap */
+        _sheap = .;
         . += _heap_size;
-        _eheap = .;    /* Kết thúc Heap */
+        _eheap = .;
     } > RAM
 
-    /* Stack - Đặt ở cuối RAM */
+    /* Stack - đặt ở cuối RAM */
     .stack (NOLOAD) :
     {
-        _estack = ORIGIN(RAM) + LENGTH(RAM);  /* Đặt _estack tại cuối RAM */
-        _sstack = _estack - _stack_size;      /* Đặt _sstack tại vị trí thấp nhất của Stack */
+        _estack = ORIGIN(RAM) + LENGTH(RAM);
+        _sstack = _estack - _stack_size;
     } > RAM
 }
