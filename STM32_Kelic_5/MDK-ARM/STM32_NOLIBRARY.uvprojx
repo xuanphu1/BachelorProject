@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../../STM32_Version_2_Handmade/Component</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\Component</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -552,57 +552,57 @@
             <File>
               <FileName>ADC_Handmade.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\STM32_Version_2_Handmade\Component\ADC_Handmade.c</FilePath>
-            </File>
-            <File>
-              <FileName>GPIO_Handmade.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\STM32_Version_2_Handmade\Component\GPIO_Handmade.c</FilePath>
-            </File>
-            <File>
-              <FileName>Flash_Handmade.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\STM32_Version_2_Handmade\Component\Flash_Handmade.c</FilePath>
-            </File>
-            <File>
-              <FileName>DMA_Handmade.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\STM32_Version_2_Handmade\Component\DMA_Handmade.c</FilePath>
-            </File>
-            <File>
-              <FileName>RCC_Handmade.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\STM32_Version_2_Handmade\Component\RCC_Handmade.c</FilePath>
-            </File>
-            <File>
-              <FileName>Timer_Handmade.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\STM32_Version_2_Handmade\Component\Timer_Handmade.c</FilePath>
-            </File>
-            <File>
-              <FileName>UART_Handmade.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\STM32_Version_2_Handmade\Component\UART_Handmade.c</FilePath>
-            </File>
-            <File>
-              <FileName>NVIC_Handmade.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\STM32_Version_2_Handmade\Component\NVIC_Handmade.c</FilePath>
-            </File>
-            <File>
-              <FileName>Systick_Handmade.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\STM32_Version_2_Handmade\Component\Systick_Handmade.c</FilePath>
+              <FilePath>..\Component\ADC_Handmade.c</FilePath>
             </File>
             <File>
               <FileName>Config.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\STM32_Version_2_Handmade\Component\Config.c</FilePath>
+              <FilePath>..\Component\Config.c</FilePath>
+            </File>
+            <File>
+              <FileName>DMA_Handmade.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\DMA_Handmade.c</FilePath>
+            </File>
+            <File>
+              <FileName>Flash_Handmade.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\Flash_Handmade.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO_Handmade.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\GPIO_Handmade.c</FilePath>
             </File>
             <File>
               <FileName>HexFileProcessing.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\STM32_Version_2_Handmade\Component\HexFileProcessing.c</FilePath>
+              <FilePath>..\Component\HexFileProcessing.c</FilePath>
+            </File>
+            <File>
+              <FileName>NVIC_Handmade.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\NVIC_Handmade.c</FilePath>
+            </File>
+            <File>
+              <FileName>RCC_Handmade.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\RCC_Handmade.c</FilePath>
+            </File>
+            <File>
+              <FileName>Systick_Handmade.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\Systick_Handmade.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer_Handmade.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\Timer_Handmade.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART_Handmade.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\UART_Handmade.c</FilePath>
             </File>
           </Files>
         </Group>

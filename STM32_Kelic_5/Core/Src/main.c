@@ -121,7 +121,8 @@ int main(void)
 	UARTInit(&uartConfigDefault);
 	EnableInterrupt_RX_UARTx(UART_1);
 	InitGPIO(&LED);
-	//Flash_ErasePage(0x08008000);
+	Flash_ErasePage(0x08008000);
+	uint8_t TEST[3] = {1,2,3};
   while (1)
   {
 		if (DataManager.modeActive == NORMAL_MODE){
@@ -137,6 +138,7 @@ int main(void)
 				LoadDataToFlash(&DataToOTA);
 				DataToOTA.Flag_Data_Full_Line = 0;
 				}
+				if(DataToOTA.StatusProcess == 1) DataManager.modeActive = NORMAL_MODE;
 				// Will Update
 		}
 		

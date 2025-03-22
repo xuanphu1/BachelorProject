@@ -1,5 +1,9 @@
 #include "Config.h"
 
+
+
+
+
 uint16_t strlen_custom(const char *str) {
     uint16_t length = 0;
     while (*str++) { // Lặp qua từng ký tự cho đến khi gặp '\0'
@@ -42,34 +46,34 @@ void memset_custom(void *ptr, uint8_t value, uint16_t size) {
  * Hàm ghép `Data` (uint16_t) vào `DataChar` (char buffer)
  */
 void InitDataToESP32(DataManager_t *DataManager) {
-    char SymbolData[] = {'T','W','P','C','Y','S'};
-    //uint8_t idx = 0;
+		char SymbolData[] = {'T','W','P','C','Y','S'};
     char tempBuffer[6];  // Đủ để chứa số `uint16_t`
     char *ptr = DataManager->DataToESP32;  // Con trỏ để ghi dữ liệu
 
     memset_custom(DataManager->DataToESP32, 0, sizeof(DataManager->DataToESP32)); // Xóa dữ liệu cũ
-
+	
     uint16_t *dataFields[] = {
-                            &DataManager->Temperature,
-                            &DataManager->WaterLevel,
-                            &DataManager->PH_Value,
-                            &DataManager->Conductivity_Value,
-                            &DataManager->TDS_Value,
-                            &DataManager->StatusDeveice,    
+				&DataManager->Temperature,
+				&DataManager->WaterLevel,
+				&DataManager->PH_Value,
+				&DataManager->Conductivity_Value,
+				&DataManager->TDS_Value,
+        &DataManager->StatusDeveice,    
     };
 
     for (uint8_t i = 0; i < 6; i++) {
         uint16_to_char(*dataFields[i], tempBuffer);  // Chuyển số thành chuỗi
-        if (i < 6) {
-            *ptr++ = SymbolData[i];  // Thêm dấu `,` giữa các số
-        }
+
         // Dùng con trỏ `tempPtr` thay vì `tempBuffer++`
         char *tempPtr = tempBuffer;
+				if (i < 6) {
+            *ptr++ = SymbolData[i];  // Thêm dấu `,` giữa các số
+        }
         while (*tempPtr) {
             *ptr++ = *tempPtr++;  // Ghi dữ liệu vào `DataToESP32`
         }
 
-        
+       
     }
 
     *ptr = '\0';  // Kết thúc chuỗi
@@ -84,6 +88,55 @@ void InitGPIO_Control_Device(void){
 		.cnf_mode = CNF_MODE_00
 	};
 	InitGPIO(&GPIO_Ctl_Device);
+	
+	GPIO_config_t GPIO_Ctl_Device_1 = {
+		.port = Port_B,
+		.pin = PIN_0,
+		.mode = OUTPUT_MODE_2_MHZ,
+		.cnf_mode = CNF_MODE_00
+	};
+	InitGPIO(&GPIO_Ctl_Device_1);
 	}
+}
+
+//xx.xx.xx.xx.xx.xx.at.mo.end
+
+void ReciveUART(DataManager_t *DataManager,uint8_t Data){
+	if( Data == END_LINE_DATA){
+        
+		DataManager->flagFullData = 1;
+		DataManager->idxData = 0;
+		DataManager->SetAuto = DataManager->UartBuff[6];
+		DataManager->modeActive = DataManager->UartBuff[7];
+		
+	}
+	else {
+		DataManager->UartBuff[DataManager->idxData++] = Data;
+	}
+}
+
+
+void getDataSensor_ControlDevice(DataManager_t *DataManager){
+		DataManager->Conductivity_Value = 100 ;
+		DataManager->PH_Value = 10 ;
+		DataManager->TDS_Value = 1000 ;
+		DataManager->Temperature = 33 ;
+		DataManager->WaterLevel = 44 ;
+	
+		if (DataManager->SetAuto == TURN_OFF_AUTO){
+			
+		}
+		for (Device_t device  = FAN; device <= FEEDER; device++) {
+					uint8_t deviceState = (DataManager->UartBuff[device] & 0x01) ? 1 : 0;  
+					WritePin(Port_A, (Pin_gpio_t)(device+3), deviceState);
+					if (device == FEEDER) WritePin(Port_B, PIN_0,deviceState);
+		}
+		
+		DataManager->StatusDeveice =  ((DataManager->UartBuff[FAN]        & 0x1) << FAN) 		| 
+																	((DataManager->UartBuff[FILTER]     & 0x1) << FILTER) | 
+																	((DataManager->UartBuff[PUMB]       & 0x1) << PUMB)  	| 
+																	((DataManager->UartBuff[HEATER]     & 0x1) << HEATER) | 
+																	((DataManager->UartBuff[LIGHT]      & 0x1) << LIGHT)	|
+																	((DataManager->UartBuff[FEEDER]     & 0x1) << FEEDER) ; 
 }
 

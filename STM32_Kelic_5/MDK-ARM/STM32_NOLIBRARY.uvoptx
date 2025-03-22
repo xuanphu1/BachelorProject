@@ -155,6 +155,16 @@
           <WinNumber>1</WinNumber>
           <ItemText>DataManager</ItemText>
         </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>DataToOTA</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Address</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>
@@ -515,7 +525,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\STM32_Version_2_Handmade\Component\ADC_Handmade.c</PathWithFileName>
+      <PathWithFileName>..\Component\ADC_Handmade.c</PathWithFileName>
       <FilenameWithoutPath>ADC_Handmade.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -527,8 +537,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\STM32_Version_2_Handmade\Component\GPIO_Handmade.c</PathWithFileName>
-      <FilenameWithoutPath>GPIO_Handmade.c</FilenameWithoutPath>
+      <PathWithFileName>..\Component\Config.c</PathWithFileName>
+      <FilenameWithoutPath>Config.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -536,11 +546,11 @@
       <GroupNumber>5</GroupNumber>
       <FileNumber>22</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\STM32_Version_2_Handmade\Component\Flash_Handmade.c</PathWithFileName>
-      <FilenameWithoutPath>Flash_Handmade.c</FilenameWithoutPath>
+      <PathWithFileName>..\Component\DMA_Handmade.c</PathWithFileName>
+      <FilenameWithoutPath>DMA_Handmade.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -551,8 +561,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\STM32_Version_2_Handmade\Component\DMA_Handmade.c</PathWithFileName>
-      <FilenameWithoutPath>DMA_Handmade.c</FilenameWithoutPath>
+      <PathWithFileName>..\Component\Flash_Handmade.c</PathWithFileName>
+      <FilenameWithoutPath>Flash_Handmade.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -563,8 +573,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\STM32_Version_2_Handmade\Component\RCC_Handmade.c</PathWithFileName>
-      <FilenameWithoutPath>RCC_Handmade.c</FilenameWithoutPath>
+      <PathWithFileName>..\Component\GPIO_Handmade.c</PathWithFileName>
+      <FilenameWithoutPath>GPIO_Handmade.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -575,8 +585,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\STM32_Version_2_Handmade\Component\Timer_Handmade.c</PathWithFileName>
-      <FilenameWithoutPath>Timer_Handmade.c</FilenameWithoutPath>
+      <PathWithFileName>..\Component\HexFileProcessing.c</PathWithFileName>
+      <FilenameWithoutPath>HexFileProcessing.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -587,8 +597,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\STM32_Version_2_Handmade\Component\UART_Handmade.c</PathWithFileName>
-      <FilenameWithoutPath>UART_Handmade.c</FilenameWithoutPath>
+      <PathWithFileName>..\Component\NVIC_Handmade.c</PathWithFileName>
+      <FilenameWithoutPath>NVIC_Handmade.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -599,8 +609,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\STM32_Version_2_Handmade\Component\NVIC_Handmade.c</PathWithFileName>
-      <FilenameWithoutPath>NVIC_Handmade.c</FilenameWithoutPath>
+      <PathWithFileName>..\Component\RCC_Handmade.c</PathWithFileName>
+      <FilenameWithoutPath>RCC_Handmade.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -611,7 +621,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\STM32_Version_2_Handmade\Component\Systick_Handmade.c</PathWithFileName>
+      <PathWithFileName>..\Component\Systick_Handmade.c</PathWithFileName>
       <FilenameWithoutPath>Systick_Handmade.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -620,11 +630,11 @@
       <GroupNumber>5</GroupNumber>
       <FileNumber>29</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\STM32_Version_2_Handmade\Component\Config.c</PathWithFileName>
-      <FilenameWithoutPath>Config.c</FilenameWithoutPath>
+      <PathWithFileName>..\Component\Timer_Handmade.c</PathWithFileName>
+      <FilenameWithoutPath>Timer_Handmade.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -632,11 +642,11 @@
       <GroupNumber>5</GroupNumber>
       <FileNumber>30</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\STM32_Version_2_Handmade\Component\HexFileProcessing.c</PathWithFileName>
-      <FilenameWithoutPath>HexFileProcessing.c</FilenameWithoutPath>
+      <PathWithFileName>..\Component\UART_Handmade.c</PathWithFileName>
+      <FilenameWithoutPath>UART_Handmade.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

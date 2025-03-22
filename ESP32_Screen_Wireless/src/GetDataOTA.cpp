@@ -5,6 +5,8 @@ extern dataManager_t dataManager;
 
 extern Flag_Signal_Control_t FlagControl;
 
+extern deviceManager_t deviceManager;
+
 
 static float mapFloat(float x, float in_min, float in_max, float out_min, float out_max) {
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
@@ -44,12 +46,11 @@ void convertCharToHex(uint8_t *arrayOutPut, char *arrayInPut, uint8_t length) {
  */
 size_t UpdateClass::writeStream(Stream &data) {
     size_t written = 0;
-    uint32_t count_byte_remain;
     int byteCount;
     uint32_t total = size();
     Serial.println("Start FOTA ...");
     // Vòng lặp: đọc từng dòng của file .hex cho đến khi không còn dữ liệu hoặc đạt đủ số byte cần ghi
-    if (FlagControl.Flag_End_OTA == 0){
+    if (deviceManager.modeActive == OTA_MODE){
         while (remaining()) {
             // Đọc một dòng đến ký tự xuống dòng '\n'
             String line = data.readStringUntil('\n');
@@ -89,13 +90,20 @@ size_t UpdateClass::writeStream(Stream &data) {
                 Serial.printf("%02x",dataManager.dataEachLine_HEX_OTA[i]);
                 Serial2.write(dataManager.dataEachLine_HEX_OTA[i]);
             }
+            Serial2.write(END_LINE_DATA);
             Serial.println("");
-            delay(50);
+            //delay(50);
+            yield();   // Nhả CPU
+
+
+            written += numBytes;
+            _progress += numBytes; 
             
             uint32_t progress = total - remaining();
-            uint8_t percentMask = (progress * 100) / total;
-            float percent = map(percentMask,0,46,0,100);
-            Serial.printf("Progress: %d%%\n", percent);
+            float percentMask = (progress * 100) / total;
+            Serial.printf("percentmask: %0.2f\n",percentMask);
+            float percent = mapFloat(percentMask,0,46,0,100);
+            Serial.printf("Progress: %0.2f%%\n", percent);
             
             // Giải phóng bộ nhớ đã cấp phát cho dòng hiện tại
             delete[] dataManager.dataEachLine_HEX_OTA;
@@ -104,6 +112,6 @@ size_t UpdateClass::writeStream(Stream &data) {
         }
     }
     
-    FlagControl.Flag_Request_OTA = 1;
+    deviceManager.modeActive = NORMAL_MODE;
     return written;
 }

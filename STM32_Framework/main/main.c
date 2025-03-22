@@ -1,37 +1,42 @@
-#include "config.h"
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2025 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
+/* Includes ------------------------------------------------------------------*/
+#include "Config.h"
+#include "HexFileProcessing.h"
 
 
-DataManager_t DataManager;
+DataManager_t DataManager = {	.modeActive = NORMAL_MODE,
+                                .SetAuto = TURN_ON_AUTO};
+
+Data_Process_t DataToOTA ;
 uint16_t ADC_Buffer[2];
-char UART_Buff[5] ; // Status of 5 device are controlled by ESP32
+
 
 void USART1_IRQHandler(void) {
-    ReceiveDataUART_IT(UART_1,(uint8_t*)UART_Buff,5);
-}
-
-void ControlDevice(uint8_t *Control_Deveice) {
-    for (Device_t Device = FAN; Device <= LIGHT; Device++) {
-        uint8_t deviceState = (Control_Deveice[Device] & 0x10) ? 1 : 0;  
-        WritePin(Port_A, (Pin_gpio_t)Device, deviceState);
-    }
-		DataManager.StatusDeveice = ((UART_Buff[FAN]        & 0x1) << FAN) 		| 
-                                    ((UART_Buff[FILLTER]    & 0x1) << FILLTER) 	| 
-                                    ((UART_Buff[PUMB]       & 0x1) << PUMB)  	| 
-                                    ((UART_Buff[HEATER]     & 0x1) << HEATER)   | 
-                                    ((UART_Buff[LIGHT]      & 0x1) << LIGHT); 
-}
-
-void getDataFromSensor(DataManager_t *dataSensor){
-		dataSensor->Conductivity_Value = 100 ;
-		dataSensor->PH_Value = 10 ;
-		dataSensor->TDS_Value = 1000 ;
-		dataSensor->Temperature = 33 ;
-		dataSensor->WaterLevel = 44 ;
 	
-		dataSensor->Conductivity_Value++;
-		dataSensor->PH_Value++;
-	
-		
+	if(DataManager.modeActive == NORMAL_MODE){
+		uint8_t data_rx = USART1_HANDMADE->UART_DR;
+		ReciveUART(&DataManager,data_rx);
+	} else {
+		DataToOTA.eachByteData = USART1_HANDMADE->UART_DR;
+		receiveDataToOTA(&DataToOTA);
+	}
 		
 }
 
@@ -40,7 +45,7 @@ Custom_USART_Config_t uartConfigDefault = {
     .usartEnable = Custom_UE_ENABLE,
     .wordLength = Custom_M_8BIT,
     .stopBits = Custom_STOP_1,
-    .baudUART = Custom_Baud_9600,
+    .baudUART = Custom_Baud_115200,
 };
 
 SysTick_Config_t SysTickConfigDefault = {
@@ -98,24 +103,42 @@ GPIO_config_t GPIO_PWM = {
     .cnf_mode = CNF_MODE_10 // Alternate Function Push-Pull
 };
 
+GPIO_config_t LED = {
+		.port = Port_C,
+    .pin = PIN_13,
+    .mode = OUTPUT_MODE_50_MHZ,
+    .cnf_mode = CNF_MODE_00 // Alternate Function Push-Pull
+};
 int main(void)
 {
+
 	init_RCC(&rccconfigDefault);
 	InitGPIO_Control_Device();
 	SysTick_Init(&SysTickConfigDefault);
 	UARTInit(&uartConfigDefault);
 	EnableInterrupt_RX_UARTx(UART_1);
+	InitGPIO(&LED);
+	Flash_ErasePage(0x08008000);
   while (1)
   {
-    
-
-    getDataFromSensor(&DataManager);
+		if (DataManager.modeActive == NORMAL_MODE){
+				getDataSensor_ControlDevice(&DataManager);
+				InitDataToESP32(&DataManager);
+				TransmitDataUART(UART_1,(uint8_t*)&DataManager.DataToESP32,strlen_custom(DataManager.DataToESP32));
+				WritePin(Port_C,PIN_13,0);
+				Delay_SysTick(100);
+				WritePin(Port_C,PIN_13,1);
+				Delay_SysTick(3000);
+		} else {
+				if (DataToOTA.Flag_Data_Full_Line){
+				LoadDataToFlash(&DataToOTA);
+				DataToOTA.Flag_Data_Full_Line = 0;
+				}
+				if(DataToOTA.StatusProcess == 1) DataManager.modeActive = NORMAL_MODE;
+				// Will Update
+		}
 		
-    ControlDevice((uint8_t*)UART_Buff);
-    
-    InitDataToESP32(&DataManager);
-    TransmitDataUART(UART_1,(uint8_t*)&DataManager.DataToESP32,strlen_custom(DataManager.DataToESP32));
-    Delay_SysTick(1000);
-}
+		
+  }
   
 }

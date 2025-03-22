@@ -11,7 +11,7 @@
 
 
 
-Flag_Signal_Control_t FlagControl = {.Flag_End_OTA = 1};
+Flag_Signal_Control_t FlagControl ;
 RTC_DS1307 rtc; // Khởi tạo RTC
 unsigned long previousMillisRTC = 0;
 const long intervalRTC = 1000; // Cập nhật mỗi 1000ms (1 giây)
@@ -86,8 +86,10 @@ ERA_WRITE(V11) { // Filter
 }
 
 ERA_WRITE(V12) { // Request OTA
-  FlagControl.Flag_Request_OTA  = param.getInt();
-  if (1 == FlagControl.Flag_Request_OTA) deviceManager.modeActive = OTA_MODE;
+  Mode_t SignalControlMode = deviceManager.modeActive;
+  deviceManager.modeActive = (Mode_t)param.getInt();
+  Serial.printf("Mode Set: %s\n",(deviceManager.modeActive == NORMAL_MODE) ? "Normal" : "OTA" );
+  if (SignalControlMode != deviceManager.modeActive) FlagControl.Flag_Request_OTA = 1;
 }
 
 
@@ -149,7 +151,7 @@ if (WiFi.status() == WL_CONNECTED) {
   ERa.virtualWrite(V9,0);
   ERa.virtualWrite(V10,0);
   ERa.virtualWrite(V11,deviceManager.set_Auto);
-  ERa.virtualWrite(V12,FlagControl.Flag_Request_OTA);
+  ERa.virtualWrite(V12,deviceManager.modeActive);
   Serial.println("Setup done");
 
 
@@ -209,7 +211,7 @@ void loop() {
       lv_label_set_text(ui_WeekDay, daysOfTheWeek[now.dayOfTheWeek()]); // Cập nhật thứ trong tuần
   }
 
-  if( FlagControl.Flag_control_Fan || FlagControl.Flag_control_Fillter || FlagControl.Flag_control_Heater || FlagControl.Flag_control_Light || FlagControl.Flag_control_Pumb || FlagControl.Flag_control_Feeder)
+  if(FlagControl.Flag_Request_OTA || FlagControl.Flag_control_Fan || FlagControl.Flag_control_Fillter || FlagControl.Flag_control_Heater || FlagControl.Flag_control_Light || FlagControl.Flag_control_Pumb || FlagControl.Flag_control_Feeder)
   {
     uint8_t ControlCommand[9];
     uint8_t *ptr = (uint8_t*)&deviceManager;
@@ -218,7 +220,7 @@ void loop() {
       ControlCommand[i] = ((i+1) << 4) | (*(ptr + i) & 0x1);
       if(i == 6) ControlCommand[i] = (deviceManager.set_Auto == TURN_ON_AUTO) ? TURN_ON_AUTO : TURN_OFF_AUTO;
       if(i == 7) ControlCommand[i] = (deviceManager.modeActive == NORMAL_MODE) ? NORMAL_MODE : OTA_MODE;
-      if(i == 8) ControlCommand[i] = END_DATA;
+      if(i == 8) ControlCommand[i] = END_LINE_DATA;
       Serial2.write(ControlCommand[i]);
       
       Serial.printf("%x",ControlCommand[i]);
@@ -280,7 +282,7 @@ void loop() {
                                                                     atoi(dataManager.Water_Capacity),
                                                                     atoi(dataManager.CONDUCT_Value));
   }
-    ERa.virtualWrite(V12,FlagControl.Flag_Request_OTA);
+  ERa.virtualWrite(V12,deviceManager.modeActive);
   lv_label_set_text(ui_DoDucValue,dataManager.CONDUCT_Value);
 
   lv_label_set_text(ui_Phvalue,dataManager.PH_Value);

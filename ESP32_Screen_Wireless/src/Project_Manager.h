@@ -22,7 +22,7 @@ typedef enum {
 	NORMAL_MODE = 0xFF
 }Mode_t;
 
-#define END_DATA 0xEE
+#define END_LINE_DATA 0xEE
 
 
 typedef struct {

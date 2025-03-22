@@ -1,5 +1,7 @@
-Component/Config_Manager/Config.c:3:10:strlen_custom	0	static
-Component/Config_Manager/Config.c:11:6:uint16_to_char	24	static
-Component/Config_Manager/Config.c:34:6:memset_custom	0	static
-Component/Config_Manager/Config.c:44:6:InitDataToESP32	80	static
-Component/Config_Manager/Config.c:78:6:InitGPIO_Control_Device	24	static
+Component/Config_Manager/Config.c:7:10:strlen_custom	0	static
+Component/Config_Manager/Config.c:15:6:uint16_to_char	24	static
+Component/Config_Manager/Config.c:38:6:memset_custom	0	static
+Component/Config_Manager/Config.c:48:6:InitDataToESP32	80	static
+Component/Config_Manager/Config.c:82:6:InitGPIO_Control_Device	32	static
+Component/Config_Manager/Config.c:104:6:ReciveUART	0	static
+Component/Config_Manager/Config.c:119:6:getDataSensor_ControlDevice	24	static

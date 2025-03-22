@@ -102,7 +102,7 @@ void InitGPIO_Control_Device(void){
 //xx.xx.xx.xx.xx.xx.at.mo.end
 
 void ReciveUART(DataManager_t *DataManager,uint8_t Data){
-	if( Data == END_DATA){
+	if( Data == END_LINE_DATA){
         
 		DataManager->flagFullData = 1;
 		DataManager->idxData = 0;
@@ -126,9 +126,10 @@ void getDataSensor_ControlDevice(DataManager_t *DataManager){
 		if (DataManager->SetAuto == TURN_OFF_AUTO){
 			
 		}
-		for (Device_t Device = FAN; Device <= LIGHT; Device++) {
-					uint8_t deviceState = (DataManager->UartBuff[Device] & 0x01) ? 1 : 0;  
-					WritePin(Port_A, (Pin_gpio_t)Device, deviceState);
+		for (Device_t device  = FAN; device <= FEEDER; device++) {
+					uint8_t deviceState = (DataManager->UartBuff[device] & 0x01) ? 1 : 0;  
+					WritePin(Port_A, (Pin_gpio_t)(device+3), deviceState);
+					if (device == FEEDER) WritePin(Port_B, PIN_0,deviceState);
 		}
 		
 		DataManager->StatusDeveice =  ((DataManager->UartBuff[FAN]        & 0x1) << FAN) 		| 
