@@ -1,0 +1,53 @@
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2025 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
+/* Includes ------------------------------------------------------------------*/
+#include "main.h"
+#include "Config.h"
+
+DataManager_t DataManager;
+
+ADC_HandleTypeDef hadc1;
+uint8_t test[2];
+
+void ADC1_2_IRQHandler(void)
+{
+  ReceiveDataUART(UART_1,test,1);
+	TransmitDataUART(UART_1,test,1);
+}
+
+
+
+int main(void)
+{
+
+  HAL_Init();
+	init_RCC(&rccconfigDefault);
+	SysTick_Init(&SysTickConfigDefault);
+	Custom_USART_Config_t uartConfig = uartConfigDefault;
+	UARTInit(&uartConfig);
+	EnableInterrupt_RX_UARTx(UART_1);
+
+  while (1)
+  {
+    
+		
+		Delay_SysTick(10);
+  }
+  
+}

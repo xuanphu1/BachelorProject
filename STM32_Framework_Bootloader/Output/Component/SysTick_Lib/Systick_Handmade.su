@@ -1,0 +1,2 @@
+Component/SysTick_Lib/Systick_Handmade.c:4:6:SysTick_Init	0	static
+Component/SysTick_Lib/Systick_Handmade.c:35:6:Delay_SysTick	16	static

@@ -1,0 +1,12 @@
+.\stm32_nolibrary\bootloader.o: ..\Component\Bootloader.c
+.\stm32_nolibrary\bootloader.o: ..\Component\Bootloader.h
+.\stm32_nolibrary\bootloader.o: ..\Component\HexFileProcessing.h
+.\stm32_nolibrary\bootloader.o: C:\Keli_V5_STM32\ARM\ARMCC\Bin\..\include\stdint.h
+.\stm32_nolibrary\bootloader.o: ..\Component\Flash_Handmade.h
+.\stm32_nolibrary\bootloader.o: ..\Component\UART_Handmade.h
+.\stm32_nolibrary\bootloader.o: ..\Component\RCC_Handmade.h
+.\stm32_nolibrary\bootloader.o: C:\Keli_V5_STM32\ARM\ARMCC\Bin\..\include\stdio.h
+.\stm32_nolibrary\bootloader.o: ..\Component\GPIO_Handmade.h
+.\stm32_nolibrary\bootloader.o: ..\Component\NVIC_Handmade.h
+.\stm32_nolibrary\bootloader.o: ..\Component\Systick_Handmade.h
+.\stm32_nolibrary\bootloader.o: ../Drivers/CMSIS/Include/cmsis_armcc.h

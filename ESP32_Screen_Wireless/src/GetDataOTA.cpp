@@ -92,7 +92,7 @@ size_t UpdateClass::writeStream(Stream &data) {
             }
             Serial2.write(END_LINE_DATA);
             Serial.println("");
-            //delay(50);
+            delay(50);
             yield();   // Nhả CPU
 
 

@@ -1,0 +1,9 @@
+Component/Syscall/Syscall_Handmade.c:13:7:_sbrk	8	static
+Component/Syscall/Syscall_Handmade.c:28:10:get_free_flash	0	static
+Component/Syscall/Syscall_Handmade.c:33:10:get_free_ram	0	static
+Component/Syscall/Syscall_Handmade.c:38:10:get_free_heap	0	static
+Component/Syscall/Syscall_Handmade.c:43:10:get_free_stack	0	static
+Component/Syscall/Syscall_Handmade.c:49:10:get_flash_used_percentage	0	static
+Component/Syscall/Syscall_Handmade.c:53:10:get_ram_used_percentage	0	static
+Component/Syscall/Syscall_Handmade.c:57:10:get_heap_used_percentage	0	static
+Component/Syscall/Syscall_Handmade.c:61:10:get_stack_used_percentage	0	static
