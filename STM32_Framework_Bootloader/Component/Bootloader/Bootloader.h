@@ -16,8 +16,8 @@ typedef enum {
 
 #define __set_MSP(addr)  __asm__ volatile ("MSR msp, %0" :: "r" (addr) : )
 
-#define SCS_BASE_HANDMADE            	(0xE000E000UL)  
-#define SHCSR_Handmade      			(SCS_BASE_HANDMADE + 0x24)            //*!< Offset: 0x024
+#define SCB_BASE_HANDMADE            	(0xE000E000UL)  
+#define SHCSR_Handmade      			(SCB_BASE_HANDMADE + 0x24)            //*!< Offset: 0x024
 
 #define PAGE_MEMORY_EACH_APP 28
 

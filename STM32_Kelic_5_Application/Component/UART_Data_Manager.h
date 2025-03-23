@@ -59,14 +59,25 @@ typedef enum {
 }Set_Auto_t;
 
 
+typedef enum {
+	TEMPERATURE = 0,
+	WATERLEVER,
+	PH,
+	CONDUCTIVITY,
+	TDS
+	
+}Data_t;
+
 typedef struct {
 	
 	uint16_t StatusDeveice;
-	uint16_t Temperature;
-	uint16_t TDS_Value;
-	uint16_t Conductivity_Value;
-	uint16_t PH_Value;
-	uint16_t WaterLevel;
+	// uint16_t Temperature;
+	// uint16_t TDS_Value;
+	// uint16_t Conductivity_Value;
+	// uint16_t PH_Value;
+	// uint16_t WaterLevel;
+
+	uint16_t DataSensor[5];
 	char DataToESP32[100];
 	
 	uint8_t UartBuff[8];
@@ -79,15 +90,12 @@ typedef struct {
 }DataManager_t;
 
 
+void ReciveUART(uint8_t Data);
 
+void InitDataManager(DataManager_t *DataManager_t);
 
-void InitGPIO_Control_Device(void);
-uint16_t strlen_custom(const char *str);
-void uint16_to_char(uint16_t value, char *buffer);
-void memset_custom(void *ptr, uint8_t value, uint16_t size);
-void InitDataToESP32(DataManager_t *DataManager) ;
-void ReciveUART(DataManager_t *DataManager,uint8_t Data);
-void getDataSensor_ControlDevice(DataManager_t *DataManager);
+void UART_Controller(void);
+
 #endif // __CONFIG_H__
 
 
