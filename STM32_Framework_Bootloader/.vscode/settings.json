@@ -64,6 +64,7 @@
     "hexfileprocessing.h": "c",
     "stdint.h": "c",
     "bootloader.h": "c",
-    "uart_handmade.h": "c"
+    "uart_handmade.h": "c",
+    "flash_handmade.h": "c"
   }
 }

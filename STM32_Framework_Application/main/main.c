@@ -22,7 +22,7 @@
 
 
 DataManager_t DataManager = {	.modeActive = NORMAL_MODE,
-                                .SetAuto = TURN_ON_AUTO};
+															.SetAuto = TURN_ON_AUTO};
 
 Data_Process_t DataToOTA ;
 uint16_t ADC_Buffer[2];
@@ -109,35 +109,81 @@ GPIO_config_t LED = {
     .mode = OUTPUT_MODE_50_MHZ,
     .cnf_mode = CNF_MODE_00 // Alternate Function Push-Pull
 };
+
+GPIO_config_t config_input = {
+	.port = Port_A,
+	.pin = PIN_4,
+	.mode = INPUT_MODE,
+	.cnf_mode = CNF_MODE_10
+};
+uint8_t jump;
+#define _VTOR (*((volatile uint32_t *)0xE000ED08))
+
+
+//#define ADDR_APP_PROGRAM 0x08000000
+//typedef void (*run_app_handler)(void);
+//run_app_handler run_app;
+//void run_app_program()
+//{
+///* Turn off Peripheral, Clear Interrupt Flag*/
+//HAL_RCC_DeInit();
+///* Clear Pending Interrupt Request, turn off System Tick*/
+//HAL_DeInit(); /* Turn off fault harder*/
+//SCB->SHCSR &= ~( SCB_SHCSR_USGFAULTENA_Msk |
+//SCB_SHCSR_BUSFAULTENA_Msk |
+//SCB_SHCSR_MEMFAULTENA_Msk ) ;
+///* Set Main Stack Pointer*/
+//__set_MSP(*((volatile uint32_t*) ADDR_APP_PROGRAM));
+//run_app = (run_app_handler)*((volatile uint32_t*) (ADDR_APP_PROGRAM + 4));
+//run_app();
+//}
+
+
 int main(void)
 {
-
+	
+	//SCB->VTOR = 0x08004000;
+	//__enable_irq();
+	InitGPIO(&config_input);
 	init_RCC(&rccconfigDefault);
 	InitGPIO_Control_Device();
 	SysTick_Init(&SysTickConfigDefault);
 	UARTInit(&uartConfigDefault);
 	EnableInterrupt_RX_UARTx(UART_1);
 	InitGPIO(&LED);
-    WritePin(Port_C,PIN_13,1);
+	
+	//WritePin(Port_C,PIN_13,0);
 	//Flash_ErasePage(0x08008000);
+	//uint8_t TEST[3] = {1,2,3};
   while (1)
   {
-		if (DataManager.modeActive == NORMAL_MODE){
-				getDataSensor_ControlDevice(&DataManager);
-				InitDataToESP32(&DataManager);
-				TransmitDataUART(UART_1,(uint8_t*)&DataManager.DataToESP32,strlen_custom(DataManager.DataToESP32));
-				WritePin(Port_C,PIN_13,0);
-				Delay_SysTick(100);
-				WritePin(Port_C,PIN_13,1);
-				Delay_SysTick(3000);
+		jump = ReadPin(Port_A,PIN_4);
+		if (jump == 0){
+			WritePin(Port_C,PIN_13,0);
+			Delay_SysTick(500);
+			WritePin(Port_C,PIN_13,1);
+			Delay_SysTick(500);
 		} else {
-				if (DataToOTA.Flag_Data_Full_Line){
-				LoadDataToFlash(&DataToOTA);
-				DataToOTA.Flag_Data_Full_Line = 0;
-				}
-				if(DataToOTA.StatusProcess == 1) DataManager.modeActive = NORMAL_MODE;
-				// Will Update
+				WritePin(Port_C,PIN_13,0);
+				//run_app_program();
 		}
+		
+//		if (DataManager.modeActive == NORMAL_MODE){
+//				getDataSensor_ControlDevice(&DataManager);
+//				InitDataToESP32(&DataManager);
+//				TransmitDataUART(UART_1,(uint8_t*)&DataManager.DataToESP32,strlen_custom(DataManager.DataToESP32));
+//				WritePin(Port_C,PIN_13,0);
+//				Delay_SysTick(100);
+//				WritePin(Port_C,PIN_13,1);
+//				Delay_SysTick(3000);
+//		} else {
+//				if (DataToOTA.Flag_Data_Full_Line){
+//				LoadDataToFlash(&DataToOTA);
+//				DataToOTA.Flag_Data_Full_Line = 0;
+//				}
+//				if(DataToOTA.StatusProcess == 1) DataManager.modeActive = NORMAL_MODE;
+//				// Will Update
+//		}
 		
 		
   }

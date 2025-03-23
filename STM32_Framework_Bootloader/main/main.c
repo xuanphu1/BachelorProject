@@ -1,26 +1,7 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2025 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
-/* Includes ------------------------------------------------------------------*/
 #include "Bootloader.h"
 
-Data_Process_t DataToOTA ;
 
+Data_Process_t DataToOTA = {0} ;
 
 void USART1_IRQHandler(void) {
 
@@ -28,15 +9,13 @@ void USART1_IRQHandler(void) {
     receiveDataToOTA(&DataToOTA);
 }
 
-
 int main(void)
 {
-
-   InitBootLoader(&DataToOTA); 
-
+	
+  InitBootLoader(&DataToOTA); 
   while (1)
   {
     BootLoader();
-    Delay_SysTick(50);
   }
 }
+

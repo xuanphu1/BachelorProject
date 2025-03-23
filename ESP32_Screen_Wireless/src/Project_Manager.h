@@ -1,7 +1,7 @@
 #ifndef PROJECT_MANAGER_H
 #define PROJECT_MANAGER_H
 #include <Arduino.h>  // Thêm thư viện này để định nghĩa String
-
+#include "esp_task_wdt.h"
 
 
 #define Fan 1

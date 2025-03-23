@@ -100,7 +100,7 @@ Serial.begin(115200);
 Serial.println("Khởi tạo Serial Monitor");
 
 // Sử dụng đối tượng Serial2 có sẵn của ESP32, cấu hình chân RX = 16, TX = 17 với tốc độ 115200
-Serial2.begin(115200, SERIAL_8N1, 16, 17);
+Serial2.begin(9600, SERIAL_8N1, 16, 17);
 Serial.println("Serial2 khởi tạo trên chân 16 (RX) và 17 (TX)");
 
 // Khởi tạo màn hình TFT và LVGL
@@ -108,7 +108,7 @@ tft_init();
 lvgl_init();
 ui_init();
   
-  // Kiểm tra RTC
+  //Kiểm tra RTC
 if (!rtc.begin()) {
   Serial.println("Không tìm thấy RTC");
 }
@@ -302,5 +302,4 @@ void loop() {
   lv_timer_handler();
   delay(10);
 }
-
-                                                                                                     
+// 2970 

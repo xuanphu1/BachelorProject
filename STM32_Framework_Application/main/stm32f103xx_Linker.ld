@@ -8,7 +8,7 @@ _stack_size = 2048;  /* 2KB Stack */
 /* Định nghĩa bộ nhớ */
 MEMORY
 {
-    FLASH (rx)  : ORIGIN = 0x08002000, LENGTH = 56K
+    FLASH (rx)  : ORIGIN = 0x08002000, LENGTH = 64K
     RAM   (rwx) : ORIGIN = 0x20000000, LENGTH = 20K
 }
 
@@ -16,14 +16,10 @@ SECTIONS
 {
     /* Bảng vector ngắt - đặt ở đầu RAM, nhưng dữ liệu nạp từ FLASH */
     .isr_vector :
-    {
-        _sisr = .;                         /* VMA của bảng vector */
+    {                       /* VMA của bảng vector */
         KEEP(*(.isr_vector))                /* Giữ bảng vector */
-        _eisr = .;
-    } > RAM AT> FLASH
+    }> FLASH
 
-    /* Lấy địa chỉ tải (LMA) của bảng vector từ FLASH */
-    _la_isr = LOADADDR(.isr_vector);
 
     /* Code chương trình nằm trong FLASH */
     .text :

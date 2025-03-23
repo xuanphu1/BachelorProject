@@ -21,6 +21,9 @@ typedef enum {
 void InitBootLoader(Data_Process_t *DataOTA);
 void BootLoader(void);
 
+void Jump_To_Application(uint32_t AppStartAddress);
+
+
 
 
 

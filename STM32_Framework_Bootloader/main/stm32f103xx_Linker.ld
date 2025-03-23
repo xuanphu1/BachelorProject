@@ -14,13 +14,13 @@ MEMORY
 
 SECTIONS
 {
-    /* Bảng vector ngắt - đặt ở đầu RAM, nhưng dữ liệu nạp từ FLASH */
+    /* Bảng vector ngắt - đặt ở đầu FLASH */
     .isr_vector :
     {
         _sisr = .;                         /* VMA của bảng vector */
         KEEP(*(.isr_vector))                /* Giữ bảng vector */
         _eisr = .;
-    } > RAM AT> FLASH
+    } > FLASH
 
     /* Lấy địa chỉ tải (LMA) của bảng vector từ FLASH */
     _la_isr = LOADADDR(.isr_vector);
@@ -37,10 +37,11 @@ SECTIONS
     /* Địa chỉ tải của dữ liệu khởi tạo nằm trong FLASH */
     _la_data = LOADADDR(.data);
 
-    /* Vùng dữ liệu đã khởi tạo trong RAM */
+    /* Vùng dữ liệu đã khởi tạo trong RAM, bao gồm section .user_data */
     .data :
     {
         _sdata = .;
+        *(.user_data)
         *(.data*)
         . = ALIGN(4);
         _edata = .;

@@ -177,6 +177,7 @@ RCCError_t Enable_Clock_RCC_APB2(APB2_Peripheral_Clock Peripheral_CLK);
 RCCError_t Enable_Clock_RCC_APB1(APB1_Peripheral_Clock Peripheral_CLK);
 RCCError_t Enable_Clock_RCC_AHB(AHB_Peripheral_Clock Peripheral_CLK);
 RCCError_t Select_Prescaler_RCC(RCC_ClockPrescaler_t *Prescaler, RCC_Prescaler_t Prescaler_type);
+RCCError_t RCC_DeInit(void);
 FREQ_Frequency_t getFrequencyAPB1(void);
 FREQ_Frequency_t getFrequencyAPB2(void);
 FREQ_Frequency_t getFrequencyAHB(void);

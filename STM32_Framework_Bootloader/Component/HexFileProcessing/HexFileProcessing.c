@@ -72,7 +72,7 @@ void LoadDataToFlash(Data_Process_t *path_Hex){
 }
 void receiveDataToOTA(Data_Process_t *DataToOTA){
     DataToOTA->byteCount = DataToOTA->ArrayBuff[0];
-	if( DataToOTA->eachByteData == END_LINE_DATA){
+	if( DataToOTA->ArrayIndex >= DataToOTA->byteCount + 5){
 		DataToOTA->Flag_Data_Full_Line = 1;
 		DataToOTA->ArrayIndex = 0;
 	}
@@ -80,7 +80,6 @@ void receiveDataToOTA(Data_Process_t *DataToOTA){
 		DataToOTA->ArrayBuff[DataToOTA->ArrayIndex++] = DataToOTA->eachByteData;
 	}
 }
-
 
 
 // 10 8000 00 00500020 11820008 0D820008 0D820008 370A

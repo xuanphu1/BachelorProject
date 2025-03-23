@@ -1,13 +1,13 @@
 #include "Bootloader.h"
 
 Data_Process_t *dataToOTA;
-
+Select_App_t firmwareFlag __attribute__((section(".user_data"))) = APP_1_ENABLE;
 
 Custom_USART_Config_t uartConfigDefault = {
     .usartEnable = Custom_UE_ENABLE,
     .wordLength = Custom_M_8BIT,
     .stopBits = Custom_STOP_1,
-    .baudUART = Custom_Baud_115200,
+    .baudUART = Custom_Baud_9600,
 };
 
 SysTick_Config_t SysTickConfigDefault = {
@@ -21,61 +21,86 @@ RCC_config_t rccconfigDefault ={
     .frequency = FREQ_72MHZ
 };
 
-GPIO_config_t config_gpio = {
+GPIO_config_t config_led = {
 	.port = Port_C,
 	.pin = PIN_13,
 	.mode = OUTPUT_MODE_50_MHZ,
 	.cnf_mode = CNF_MODE_00
 };
 
+
+static void ClearPendingFault(){
+    *((volatile uint32_t *)SHCSR_Handmade) &= ~((1UL << 16) | (1UL << 17) | (1UL << 18));
+}
+
+static void DisableAllInterrupt(void)
+{
+   __asm volatile ("cpsid i" : : : "memory");
+}
+
 void InitBootLoader(Data_Process_t *DataOTA){
     dataToOTA = DataOTA;
     init_RCC(&rccconfigDefault);
-		SysTick_Init(&SysTickConfigDefault);
-		UARTInit(&uartConfigDefault);
-		EnableInterrupt_RX_UARTx(UART_1);
-		InitGPIO(&config_gpio);
-		WritePin(Port_C,PIN_13,1);
+    SysTick_Init(&SysTickConfigDefault);
+    UARTInit(&uartConfigDefault);
+    EnableInterrupt_RX_UARTx(UART_1);
+    InitGPIO(&config_led);
+    WritePin(Port_C,PIN_13,0);
 }
 
 
 
 void Jump_To_Application(uint32_t AppStartAddress)
 {
-    uint32_t topOfMainStack;
-    // 1. Lấy địa chỉ Stack Pointer từ vector table
-    topOfMainStack = REG_READ32(AppStartAddress);
+    
+    // 1. Lấy giá trị Stack Pointer từ vector table của ứng dụng
+    uint32_t topOfMainStack = *(volatile uint32_t*)AppStartAddress;
 
+    // 2. Lấy địa chỉ Reset_Handler của ứng dụng
     void (*App_Reset_Handler)(void) = 
-    (void(*)(void))(*(volatile uint32_t*)(AppStartAddress+4));
-    // 3. Set lại MSP (Main Stack Pointer)
-    //__set_MSP_HM(sp);
+        (void (*)(void))(*(volatile uint32_t*)(AppStartAddress + 4));
+
+    // 3. Vô hiệu hóa tất cả ngắt
+    DisableAllInterrupt();
+    
+    // 4. Tắt SysTick
+    SYSTICK_HANDMADE->SYST_CSR = 0;
+    SYSTICK_HANDMADE->SYST_CVR = 0;
+    SYSTICK_HANDMADE->SYST_RVR = 0;
+
+    // 5. Xóa pending fault
+    ClearPendingFault();
+    
+    // 6. Gọi HAL_DeInit
+    RCC_DeInit();
+    // 7. Set lại Stack Pointer (MSP)
     __set_MSP(topOfMainStack);
-    // 4. Set lại địa chỉ bảng vector ngắt
+
+    // 8. Gán lại bảng vector
     _VTOR = AppStartAddress;
-    //TransmitDataUART(UART_1,&AppStartAddress,1);
-    // 5. Nhảy tới ứng dụng
-   
-	WritePin(Port_C,PIN_13,0);
-	//Delay_SysTick(1000);
+
+
+    // 10. Nhảy vào ứng dụng
     App_Reset_Handler();
 }
-
 void BootLoader(void){
 
     if (dataToOTA->Flag_Data_Full_Line){
         LoadDataToFlash(dataToOTA);
         dataToOTA->Flag_Data_Full_Line = 0;
+        TogglePin(Port_C,PIN_13);
     }
     if(dataToOTA->StatusProcess == 1) {
-        //if((Select_App_t)Flag_Select_App == APP_1_ENABLE) {
+        if((Select_App_t)firmwareFlag == APP_1_ENABLE) {
             Flash_EraseRange(APP_2_START_ADDRESS,PAGE_MEMORY_EACH_APP);
-            //Flag_Select_App = APP_2_ENABLE;
+            firmwareFlag = APP_2_ENABLE;
             Jump_To_Application(APP_1_START_ADDRESS);
-        // } else {
-        //     Flash_EraseRange(APP_1_START_ADDRESS,PAGE_MEMORY_EACH_APP);
-        //     Flag_Select_App = APP_1_ENABLE;
-        //     Jump_To_Application(APP_2_START_ADDRESS);
-        // }
+        } else {
+            Flash_EraseRange(APP_1_START_ADDRESS,PAGE_MEMORY_EACH_APP);
+            firmwareFlag = APP_1_ENABLE;
+            Jump_To_Application(APP_2_START_ADDRESS);
+        }
     }
 }
+
+

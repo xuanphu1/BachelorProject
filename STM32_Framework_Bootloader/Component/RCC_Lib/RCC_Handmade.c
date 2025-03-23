@@ -206,4 +206,32 @@ FREQ_Frequency_t getFrequencyRCC(void){
     return (FREQ_Frequency_t)(Frequency_RCC);
 }
 
+/* Hàm RCC_DeInit() của bạn đã được định nghĩa để reset các thanh ghi RCC */
+RCCError_t RCC_DeInit(void)
+{
+    /* 1. Reset register CFGR: thiết lập về giá trị mặc định (HSI làm SYSCLK, không chia tần, v.v.) */
+    RCC_HANDMADE->RCC_CFGR = 0;
+
+    /* 2. Tắt HSE và PLL, giữ HSION bật */
+    RCC_HANDMADE->RCC_CR &= ~((1U << 16) | (1U << 24));
+    RCC_HANDMADE->RCC_CR |= (1U << 0);  // HSION
+    while (!(RCC_HANDMADE->RCC_CR & (1U << 1)))
+    {
+        /* Chờ HSI ổn định */
+    }
+
+    /* 3. Reset các peripheral clock enable */
+    RCC_HANDMADE->RCC_APB1ENR = 0;
+    RCC_HANDMADE->RCC_APB2ENR = 0;
+    /* Giá trị mặc định của RCC_AHBENR trên STM32F103 thường là 0x14 (cho phép DMA & SRAM) */
+    RCC_HANDMADE->RCC_AHBENR = 0x14;
+
+    /* 4. Reset các biến cấu hình toàn cục */
+    Frequency_RCC = FREQ_8MHZ;      // Giả sử HSI là 8MHz
+    PPRE1_Prescaler = PPRE_CLOCK_DIV_1;
+    PPRE2_Prescaler = PPRE_CLOCK_DIV_1;
+    HPRE_Prescaler  = HPRE_CLOCK_DIV_1;
+
+    return RCC_OK;
+}
 

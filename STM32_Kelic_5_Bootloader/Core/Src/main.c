@@ -28,17 +28,31 @@ void USART1_IRQHandler(void) {
     DataToOTA.eachByteData = USART1_HANDMADE->UART_DR;
     receiveDataToOTA(&DataToOTA);
 }
-
+GPIO_config_t config_input = {
+	.port = Port_A,
+	.pin = PIN_3,
+	.mode = INPUT_MODE,
+	.cnf_mode = CNF_MODE_10
+};
+uint8_t jump;
 int main(void)
 {
-
+	
 		HAL_Init();
 		InitBootLoader(&DataToOTA); 
-
+		InitGPIO(&config_input);
+		
   while (1)
   {
+//		jump = ReadPin(Port_A,PIN_3);
+//		//WritePin(Port_C,PIN_13,0);
+//		if(jump == 1){
+//			Jump_To_Application(0x08002000);
+//			//WritePin(Port_C,PIN_13,1);
+//		}
+//		
     BootLoader();
-    Delay_SysTick(50);
+    //Delay_SysTick(50);
   }
 }
 

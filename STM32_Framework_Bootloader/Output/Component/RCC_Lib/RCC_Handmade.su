@@ -9,3 +9,4 @@ Component/RCC_Lib/RCC_Handmade.c:191:18:getFrequencyAHB	0	static
 Component/RCC_Lib/RCC_Handmade.c:196:18:getFrequencyAPB1	0	static
 Component/RCC_Lib/RCC_Handmade.c:201:18:getFrequencyAPB2	0	static
 Component/RCC_Lib/RCC_Handmade.c:205:18:getFrequencyRCC	0	static
+Component/RCC_Lib/RCC_Handmade.c:210:12:RCC_DeInit	16	static

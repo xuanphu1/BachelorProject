@@ -8,10 +8,6 @@ c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\lib
                               ./Output/Component/Uart_Lib/UART_Handmade.o (__aeabi_fdiv)
 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
                               ./Output/Component/Uart_Lib/UART_Handmade.o (__aeabi_f2uiz)
-c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-errno.o)
-                              ./Output/Component/Syscall/Syscall_Handmade.o (__errno)
-c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
-                              c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-errno.o) (_impure_ptr)
 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memcpy-stub.o)
                               ./Output/main/STM32_Startup.o (memcpy)
 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memset.o)
@@ -31,7 +27,7 @@ Discarded input sections
  .data          0x00000000        0x0 ./Output/Component/Bootloader/Bootloader.o
  .bss           0x00000000        0x0 ./Output/Component/Bootloader/Bootloader.o
  .text.Jump_To_Application
-                0x00000000       0x28 ./Output/Component/Bootloader/Bootloader.o
+                0x00000000       0x34 ./Output/Component/Bootloader/Bootloader.o
  .text          0x00000000        0x0 ./Output/Component/Flash_Lib/Flash_Handmade.o
  .data          0x00000000        0x0 ./Output/Component/Flash_Lib/Flash_Handmade.o
  .bss           0x00000000        0x0 ./Output/Component/Flash_Lib/Flash_Handmade.o
@@ -80,34 +76,13 @@ Discarded input sections
                 0x00000000       0x48 ./Output/Component/RCC_Lib/RCC_Handmade.o
  .text.getFrequencyAHB
                 0x00000000       0x30 ./Output/Component/RCC_Lib/RCC_Handmade.o
- .text          0x00000000        0x0 ./Output/Component/Syscall/Syscall_Handmade.o
- .data          0x00000000        0x0 ./Output/Component/Syscall/Syscall_Handmade.o
- .bss           0x00000000        0x0 ./Output/Component/Syscall/Syscall_Handmade.o
- .text._sbrk    0x00000000       0x30 ./Output/Component/Syscall/Syscall_Handmade.o
- .text.get_free_flash
-                0x00000000       0x10 ./Output/Component/Syscall/Syscall_Handmade.o
- .text.get_free_ram
-                0x00000000       0x10 ./Output/Component/Syscall/Syscall_Handmade.o
- .text.get_free_heap
-                0x00000000       0x14 ./Output/Component/Syscall/Syscall_Handmade.o
- .text.get_free_stack
-                0x00000000       0x10 ./Output/Component/Syscall/Syscall_Handmade.o
- .text.get_flash_used_percentage
-                0x00000000        0x4 ./Output/Component/Syscall/Syscall_Handmade.o
- .text.get_ram_used_percentage
-                0x00000000       0x24 ./Output/Component/Syscall/Syscall_Handmade.o
- .text.get_heap_used_percentage
-                0x00000000       0x24 ./Output/Component/Syscall/Syscall_Handmade.o
- .text.get_stack_used_percentage
-                0x00000000       0x20 ./Output/Component/Syscall/Syscall_Handmade.o
- .data.heap_end
-                0x00000000        0x4 ./Output/Component/Syscall/Syscall_Handmade.o
- .comment       0x00000000       0x4a ./Output/Component/Syscall/Syscall_Handmade.o
- .ARM.attributes
-                0x00000000       0x2d ./Output/Component/Syscall/Syscall_Handmade.o
+ .text.getFrequencyRCC
+                0x00000000        0xc ./Output/Component/RCC_Lib/RCC_Handmade.o
  .text          0x00000000        0x0 ./Output/Component/SysTick_Lib/Systick_Handmade.o
  .data          0x00000000        0x0 ./Output/Component/SysTick_Lib/Systick_Handmade.o
  .bss           0x00000000        0x0 ./Output/Component/SysTick_Lib/Systick_Handmade.o
+ .text.Delay_SysTick
+                0x00000000       0x44 ./Output/Component/SysTick_Lib/Systick_Handmade.o
  .text          0x00000000        0x0 ./Output/Component/Uart_Lib/UART_Handmade.o
  .data          0x00000000        0x0 ./Output/Component/Uart_Lib/UART_Handmade.o
  .bss           0x00000000        0x0 ./Output/Component/Uart_Lib/UART_Handmade.o
@@ -134,24 +109,6 @@ Discarded input sections
  .bss           0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
  .data          0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
  .bss           0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
- .text          0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-errno.o)
- .data          0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-errno.o)
- .bss           0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-errno.o)
- .text.__errno  0x00000000        0xc c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-errno.o)
- .debug_frame   0x00000000       0x20 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-errno.o)
- .ARM.attributes
-                0x00000000       0x2d c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-errno.o)
- .text          0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
- .data          0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
- .bss           0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
- .data._impure_ptr
-                0x00000000        0x4 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
- .data.impure_data
-                0x00000000       0x60 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
- .rodata._global_impure_ptr
-                0x00000000        0x4 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
- .ARM.attributes
-                0x00000000       0x2d c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
  .text          0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memcpy-stub.o)
  .data          0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memcpy-stub.o)
  .bss           0x00000000        0x0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memcpy-stub.o)
@@ -179,7 +136,6 @@ LOAD ./Output/Component/GPIO_Lib/GPIO_Handmade.o
 LOAD ./Output/Component/HexFileProcessing/HexFileProcessing.o
 LOAD ./Output/Component/Nvic_Lib/NVIC_Handmade.o
 LOAD ./Output/Component/RCC_Lib/RCC_Handmade.o
-LOAD ./Output/Component/Syscall/Syscall_Handmade.o
 LOAD ./Output/Component/SysTick_Lib/Systick_Handmade.o
 LOAD ./Output/Component/Uart_Lib/UART_Handmade.o
 START GROUP
@@ -193,273 +149,273 @@ END GROUP
                 0x00000800                _heap_size = 0x800
                 0x00000800                _stack_size = 0x800
 
-.isr_vector     0x20000000      0x130 load address 0x08000000
-                0x20000000                _sisr = .
+.isr_vector     0x08000000      0x130
+                0x08000000                _sisr = .
  *(.isr_vector)
- .isr_vector    0x20000000      0x130 ./Output/main/STM32_Startup.o
-                0x20000000                vectors
-                0x20000130                _eisr = .
+ .isr_vector    0x08000000      0x130 ./Output/main/STM32_Startup.o
+                0x08000000                vectors
+                0x08000130                _eisr = .
                 0x08000000                _la_isr = LOADADDR (.isr_vector)
 
-.text           0x08000130      0xfc8
+.text           0x08000130      0xfe0
  *(.text*)
  .text.USART1_IRQHandler
                 0x08000130       0x14 ./Output/main/main.o
                 0x08000130                USART1_IRQHandler
  .text.startup.main
-                0x08000144       0x18 ./Output/main/main.o
+                0x08000144       0x14 ./Output/main/main.o
                 0x08000144                main
  .text.Default_Handler
-                0x0800015c        0x4 ./Output/main/STM32_Startup.o
-                0x0800015c                RTC_Alarm_IRQHandler
-                0x0800015c                EXTI2_IRQHandler
-                0x0800015c                TIM8_TRG_COM_IRQHandler
-                0x0800015c                TIM8_CC_IRQHandler
-                0x0800015c                DebugMon_Handler
-                0x0800015c                TIM1_CC_IRQHandler
-                0x0800015c                HardFault_Handler
-                0x0800015c                TIM6_IRQHandler
-                0x0800015c                SysTick_Handler
-                0x0800015c                PVD_IRQHandler
-                0x0800015c                SDIO_IRQHandler
-                0x0800015c                PendSV_Handler
-                0x0800015c                NMI_Handler
-                0x0800015c                EXTI3_IRQHandler
-                0x0800015c                EXTI0_IRQHandler
-                0x0800015c                I2C2_EV_IRQHandler
-                0x0800015c                UsageFault_Handler
-                0x0800015c                ADC1_2_IRQHandler
-                0x0800015c                SPI1_IRQHandler
-                0x0800015c                TAMPER_IRQHandler
-                0x0800015c                TIM8_UP_IRQHandler
-                0x0800015c                DMA2_Channel2_IRQHandler
-                0x0800015c                DMA1_Channel4_IRQHandler
-                0x0800015c                USART3_IRQHandler
-                0x0800015c                RTC_IRQHandler
-                0x0800015c                DMA1_Channel7_IRQHandler
-                0x0800015c                CAN1_RX1_IRQHandler
-                0x0800015c                UART5_IRQHandler
-                0x0800015c                ADC3_IRQHandler
-                0x0800015c                USBWakeup_IRQHandler
-                0x0800015c                TIM4_IRQHandler
-                0x0800015c                DMA2_Channel1_IRQHandler
-                0x0800015c                I2C1_EV_IRQHandler
-                0x0800015c                DMA1_Channel6_IRQHandler
-                0x0800015c                UART4_IRQHandler
-                0x0800015c                TIM3_IRQHandler
-                0x0800015c                RCC_IRQHandler
-                0x0800015c                TIM1_TRG_COM_IRQHandler
-                0x0800015c                DMA1_Channel1_IRQHandler
-                0x0800015c                Default_Handler
-                0x0800015c                EXTI15_10_IRQHandler
-                0x0800015c                TIM7_IRQHandler
-                0x0800015c                TIM5_IRQHandler
-                0x0800015c                EXTI9_5_IRQHandler
-                0x0800015c                SPI2_IRQHandler
-                0x0800015c                MemManage_Handler
-                0x0800015c                SVC_Handler
-                0x0800015c                DMA1_Channel5_IRQHandler
-                0x0800015c                EXTI4_IRQHandler
-                0x0800015c                USB_LP_CAN1_RX0_IRQHandler
-                0x0800015c                USB_HP_CAN1_TX_IRQHandler
-                0x0800015c                DMA1_Channel3_IRQHandler
-                0x0800015c                FSMC_IRQHandler
-                0x0800015c                TIM1_UP_IRQHandler
-                0x0800015c                WWDG_IRQHandler
-                0x0800015c                TIM2_IRQHandler
-                0x0800015c                TIM1_BRK_IRQHandler
-                0x0800015c                EXTI1_IRQHandler
-                0x0800015c                DMA2_Channel4_5_IRQHandler
-                0x0800015c                USART2_IRQHandler
-                0x0800015c                I2C2_ER_IRQHandler
-                0x0800015c                DMA1_Channel2_IRQHandler
-                0x0800015c                TIM8_BRK_IRQHandler
-                0x0800015c                CAN1_SCE_IRQHandler
-                0x0800015c                FLASH_IRQHandler
-                0x0800015c                BusFault_Handler
-                0x0800015c                SPI3_IRQHandler
-                0x0800015c                I2C1_ER_IRQHandler
-                0x0800015c                DMA2_Channel3_IRQHandler
+                0x08000158        0x4 ./Output/main/STM32_Startup.o
+                0x08000158                RTC_Alarm_IRQHandler
+                0x08000158                EXTI2_IRQHandler
+                0x08000158                TIM8_TRG_COM_IRQHandler
+                0x08000158                TIM8_CC_IRQHandler
+                0x08000158                DebugMon_Handler
+                0x08000158                TIM1_CC_IRQHandler
+                0x08000158                HardFault_Handler
+                0x08000158                TIM6_IRQHandler
+                0x08000158                SysTick_Handler
+                0x08000158                PVD_IRQHandler
+                0x08000158                SDIO_IRQHandler
+                0x08000158                PendSV_Handler
+                0x08000158                NMI_Handler
+                0x08000158                EXTI3_IRQHandler
+                0x08000158                EXTI0_IRQHandler
+                0x08000158                I2C2_EV_IRQHandler
+                0x08000158                UsageFault_Handler
+                0x08000158                ADC1_2_IRQHandler
+                0x08000158                SPI1_IRQHandler
+                0x08000158                TAMPER_IRQHandler
+                0x08000158                TIM8_UP_IRQHandler
+                0x08000158                DMA2_Channel2_IRQHandler
+                0x08000158                DMA1_Channel4_IRQHandler
+                0x08000158                USART3_IRQHandler
+                0x08000158                RTC_IRQHandler
+                0x08000158                DMA1_Channel7_IRQHandler
+                0x08000158                CAN1_RX1_IRQHandler
+                0x08000158                UART5_IRQHandler
+                0x08000158                ADC3_IRQHandler
+                0x08000158                USBWakeup_IRQHandler
+                0x08000158                TIM4_IRQHandler
+                0x08000158                DMA2_Channel1_IRQHandler
+                0x08000158                I2C1_EV_IRQHandler
+                0x08000158                DMA1_Channel6_IRQHandler
+                0x08000158                UART4_IRQHandler
+                0x08000158                TIM3_IRQHandler
+                0x08000158                RCC_IRQHandler
+                0x08000158                TIM1_TRG_COM_IRQHandler
+                0x08000158                DMA1_Channel1_IRQHandler
+                0x08000158                Default_Handler
+                0x08000158                EXTI15_10_IRQHandler
+                0x08000158                TIM7_IRQHandler
+                0x08000158                TIM5_IRQHandler
+                0x08000158                EXTI9_5_IRQHandler
+                0x08000158                SPI2_IRQHandler
+                0x08000158                MemManage_Handler
+                0x08000158                SVC_Handler
+                0x08000158                DMA1_Channel5_IRQHandler
+                0x08000158                EXTI4_IRQHandler
+                0x08000158                USB_LP_CAN1_RX0_IRQHandler
+                0x08000158                USB_HP_CAN1_TX_IRQHandler
+                0x08000158                DMA1_Channel3_IRQHandler
+                0x08000158                FSMC_IRQHandler
+                0x08000158                TIM1_UP_IRQHandler
+                0x08000158                WWDG_IRQHandler
+                0x08000158                TIM2_IRQHandler
+                0x08000158                TIM1_BRK_IRQHandler
+                0x08000158                EXTI1_IRQHandler
+                0x08000158                DMA2_Channel4_5_IRQHandler
+                0x08000158                USART2_IRQHandler
+                0x08000158                I2C2_ER_IRQHandler
+                0x08000158                DMA1_Channel2_IRQHandler
+                0x08000158                TIM8_BRK_IRQHandler
+                0x08000158                CAN1_SCE_IRQHandler
+                0x08000158                FLASH_IRQHandler
+                0x08000158                BusFault_Handler
+                0x08000158                SPI3_IRQHandler
+                0x08000158                I2C1_ER_IRQHandler
+                0x08000158                DMA2_Channel3_IRQHandler
  .text.Reset_Handler
-                0x08000160       0x60 ./Output/main/STM32_Startup.o
-                0x08000160                Reset_Handler
+                0x0800015c       0x3c ./Output/main/STM32_Startup.o
+                0x0800015c                Reset_Handler
  .text.InitBootLoader
-                0x080001c0       0x48 ./Output/Component/Bootloader/Bootloader.o
-                0x080001c0                InitBootLoader
+                0x08000198       0x48 ./Output/Component/Bootloader/Bootloader.o
+                0x08000198                InitBootLoader
  .text.BootLoader
-                0x08000208       0x5c ./Output/Component/Bootloader/Bootloader.o
-                0x08000208                BootLoader
+                0x080001e0       0x90 ./Output/Component/Bootloader/Bootloader.o
+                0x080001e0                BootLoader
  .text.Flash_AdjustForCLK
-                0x08000264       0x88 ./Output/Component/Flash_Lib/Flash_Handmade.o
-                0x08000264                Flash_AdjustForCLK
+                0x08000270       0x88 ./Output/Component/Flash_Lib/Flash_Handmade.o
+                0x08000270                Flash_AdjustForCLK
  .text.Flash_Write
-                0x080002ec       0x58 ./Output/Component/Flash_Lib/Flash_Handmade.o
-                0x080002ec                Flash_Write
+                0x080002f8       0x58 ./Output/Component/Flash_Lib/Flash_Handmade.o
+                0x080002f8                Flash_Write
  .text.Flash_EraseRange
-                0x08000344       0x8c ./Output/Component/Flash_Lib/Flash_Handmade.o
-                0x08000344                Flash_EraseRange
+                0x08000350       0x8c ./Output/Component/Flash_Lib/Flash_Handmade.o
+                0x08000350                Flash_EraseRange
  .text.InitGPIO
-                0x080003d0       0x98 ./Output/Component/GPIO_Lib/GPIO_Handmade.o
-                0x080003d0                InitGPIO
+                0x080003dc       0x98 ./Output/Component/GPIO_Lib/GPIO_Handmade.o
+                0x080003dc                InitGPIO
  .text.WritePin
-                0x08000468       0x5c ./Output/Component/GPIO_Lib/GPIO_Handmade.o
-                0x08000468                WritePin
+                0x08000474       0x5c ./Output/Component/GPIO_Lib/GPIO_Handmade.o
+                0x08000474                WritePin
  .text.LoadDataToFlash
-                0x080004c4      0x170 ./Output/Component/HexFileProcessing/HexFileProcessing.o
-                0x080004c4                LoadDataToFlash
+                0x080004d0      0x170 ./Output/Component/HexFileProcessing/HexFileProcessing.o
+                0x080004d0                LoadDataToFlash
  .text.receiveDataToOTA
-                0x08000634       0x28 ./Output/Component/HexFileProcessing/HexFileProcessing.o
-                0x08000634                receiveDataToOTA
+                0x08000640       0x28 ./Output/Component/HexFileProcessing/HexFileProcessing.o
+                0x08000640                receiveDataToOTA
  .text.Enable_Intterupt_NVIC
-                0x0800065c       0x20 ./Output/Component/Nvic_Lib/NVIC_Handmade.o
-                0x0800065c                Enable_Intterupt_NVIC
+                0x08000668       0x20 ./Output/Component/Nvic_Lib/NVIC_Handmade.o
+                0x08000668                Enable_Intterupt_NVIC
  .text.Enable_Clock_RCC_APB2
-                0x0800067c       0x1c ./Output/Component/RCC_Lib/RCC_Handmade.o
-                0x0800067c                Enable_Clock_RCC_APB2
+                0x08000688       0x1c ./Output/Component/RCC_Lib/RCC_Handmade.o
+                0x08000688                Enable_Clock_RCC_APB2
  .text.Enable_Clock_RCC_APB1
-                0x08000698       0x1c ./Output/Component/RCC_Lib/RCC_Handmade.o
-                0x08000698                Enable_Clock_RCC_APB1
+                0x080006a4       0x1c ./Output/Component/RCC_Lib/RCC_Handmade.o
+                0x080006a4                Enable_Clock_RCC_APB1
  .text.Select_Frequency_CLK
-                0x080006b4      0x120 ./Output/Component/RCC_Lib/RCC_Handmade.o
-                0x080006b4                Select_Frequency_CLK
+                0x080006c0      0x120 ./Output/Component/RCC_Lib/RCC_Handmade.o
+                0x080006c0                Select_Frequency_CLK
  .text.init_RCC
-                0x080007d4       0x90 ./Output/Component/RCC_Lib/RCC_Handmade.o
-                0x080007d4                init_RCC
+                0x080007e0       0x90 ./Output/Component/RCC_Lib/RCC_Handmade.o
+                0x080007e0                init_RCC
  .text.getFrequencyAPB1
-                0x08000864       0x30 ./Output/Component/RCC_Lib/RCC_Handmade.o
-                0x08000864                getFrequencyAPB1
+                0x08000870       0x30 ./Output/Component/RCC_Lib/RCC_Handmade.o
+                0x08000870                getFrequencyAPB1
  .text.getFrequencyAPB2
-                0x08000894       0x30 ./Output/Component/RCC_Lib/RCC_Handmade.o
-                0x08000894                getFrequencyAPB2
- .text.getFrequencyRCC
-                0x080008c4        0xc ./Output/Component/RCC_Lib/RCC_Handmade.o
-                0x080008c4                getFrequencyRCC
+                0x080008a0       0x30 ./Output/Component/RCC_Lib/RCC_Handmade.o
+                0x080008a0                getFrequencyAPB2
+ .text.RCC_DeInit
+                0x080008d0       0x5c ./Output/Component/RCC_Lib/RCC_Handmade.o
+                0x080008d0                RCC_DeInit
  .text.SysTick_Init
-                0x080008d0       0x50 ./Output/Component/SysTick_Lib/Systick_Handmade.o
-                0x080008d0                SysTick_Init
- .text.Delay_SysTick
-                0x08000920       0x44 ./Output/Component/SysTick_Lib/Systick_Handmade.o
-                0x08000920                Delay_SysTick
+                0x0800092c       0x50 ./Output/Component/SysTick_Lib/Systick_Handmade.o
+                0x0800092c                SysTick_Init
  .text.UARTInit
-                0x08000964      0x220 ./Output/Component/Uart_Lib/UART_Handmade.o
-                0x08000964                UARTInit
+                0x0800097c      0x220 ./Output/Component/Uart_Lib/UART_Handmade.o
+                0x0800097c                UARTInit
  .text.EnableInterrupt_RX_UARTx
-                0x08000b84       0x30 ./Output/Component/Uart_Lib/UART_Handmade.o
-                0x08000b84                EnableInterrupt_RX_UARTx
- .text          0x08000bb4      0x21c c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
-                0x08000bb4                __aeabi_frsub
-                0x08000bbc                __subsf3
-                0x08000bbc                __aeabi_fsub
-                0x08000bc0                __aeabi_fadd
-                0x08000bc0                __addsf3
-                0x08000d20                __aeabi_ui2f
-                0x08000d20                __floatunsisf
-                0x08000d28                __aeabi_i2f
-                0x08000d28                __floatsisf
-                0x08000d44                __aeabi_ul2f
-                0x08000d44                __floatundisf
-                0x08000d54                __aeabi_l2f
-                0x08000d54                __floatdisf
- .text          0x08000dd0      0x2a0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
-                0x08000dd0                __mulsf3
-                0x08000dd0                __aeabi_fmul
-                0x08000f38                __aeabi_fdiv
-                0x08000f38                __divsf3
- .text          0x08001070       0x40 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
-                0x08001070                __fixunssfsi
-                0x08001070                __aeabi_f2uiz
- .text.memcpy   0x080010b0       0x1c c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memcpy-stub.o)
-                0x080010b0                memcpy
- .text.memset   0x080010cc       0x10 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memset.o)
-                0x080010cc                memset
+                0x08000b9c       0x30 ./Output/Component/Uart_Lib/UART_Handmade.o
+                0x08000b9c                EnableInterrupt_RX_UARTx
+ .text          0x08000bcc      0x21c c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
+                0x08000bcc                __aeabi_frsub
+                0x08000bd4                __subsf3
+                0x08000bd4                __aeabi_fsub
+                0x08000bd8                __aeabi_fadd
+                0x08000bd8                __addsf3
+                0x08000d38                __aeabi_ui2f
+                0x08000d38                __floatunsisf
+                0x08000d40                __aeabi_i2f
+                0x08000d40                __floatsisf
+                0x08000d5c                __aeabi_ul2f
+                0x08000d5c                __floatundisf
+                0x08000d6c                __aeabi_l2f
+                0x08000d6c                __floatdisf
+ .text          0x08000de8      0x2a0 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
+                0x08000de8                __mulsf3
+                0x08000de8                __aeabi_fmul
+                0x08000f50                __aeabi_fdiv
+                0x08000f50                __divsf3
+ .text          0x08001088       0x40 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
+                0x08001088                __fixunssfsi
+                0x08001088                __aeabi_f2uiz
+ .text.memcpy   0x080010c8       0x1c c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memcpy-stub.o)
+                0x080010c8                memcpy
+ .text.memset   0x080010e4       0x10 c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-memset.o)
+                0x080010e4                memset
  *(.rodata*)
  .rodata.GPIO_List
-                0x080010dc       0x1c ./Output/Component/GPIO_Lib/GPIO_Handmade.o
-                0x080010f8                . = ALIGN (0x4)
-                0x080010f8                _etext = .
-                0x080010f8                _la_data = LOADADDR (.data)
+                0x080010f4       0x1c ./Output/Component/GPIO_Lib/GPIO_Handmade.o
+                0x08001110                . = ALIGN (0x4)
+                0x08001110                _etext = .
+                0x08001110                _la_data = LOADADDR (.data)
 
-.glue_7         0x080010f8        0x0
- .glue_7        0x080010f8        0x0 linker stubs
+.glue_7         0x08001110        0x0
+ .glue_7        0x08001110        0x0 linker stubs
 
-.glue_7t        0x080010f8        0x0
- .glue_7t       0x080010f8        0x0 linker stubs
+.glue_7t        0x08001110        0x0
+ .glue_7t       0x08001110        0x0 linker stubs
 
-.vfp11_veneer   0x080010f8        0x0
- .vfp11_veneer  0x080010f8        0x0 linker stubs
+.vfp11_veneer   0x08001110        0x0
+ .vfp11_veneer  0x08001110        0x0 linker stubs
 
-.v4_bx          0x080010f8        0x0
- .v4_bx         0x080010f8        0x0 linker stubs
+.v4_bx          0x08001110        0x0
+ .v4_bx         0x08001110        0x0 linker stubs
 
-.iplt           0x080010f8        0x0
- .iplt          0x080010f8        0x0 ./Output/main/main.o
+.iplt           0x08001110        0x0
+ .iplt          0x08001110        0x0 ./Output/main/main.o
 
-.rel.dyn        0x080010f8        0x0
- .rel.iplt      0x080010f8        0x0 ./Output/main/main.o
+.rel.dyn        0x08001110        0x0
+ .rel.iplt      0x08001110        0x0 ./Output/main/main.o
 
-.data           0x20000130       0x54 load address 0x080010f8
-                0x20000130                _sdata = .
+.data           0x20000000       0x58 load address 0x08001110
+                0x20000000                _sdata = .
+ *(.user_data)
+ .user_data     0x20000000        0x1 ./Output/Component/Bootloader/Bootloader.o
+                0x20000000                firmwareFlag
  *(.data*)
+ *fill*         0x20000001        0x3 
  .data.SysTickConfigDefault
-                0x20000130        0x8 ./Output/Component/Bootloader/Bootloader.o
-                0x20000130                SysTickConfigDefault
+                0x20000004        0x8 ./Output/Component/Bootloader/Bootloader.o
+                0x20000004                SysTickConfigDefault
  .data.config_gpio
-                0x20000138        0x4 ./Output/Component/Bootloader/Bootloader.o
-                0x20000138                config_gpio
+                0x2000000c        0x4 ./Output/Component/Bootloader/Bootloader.o
+                0x2000000c                config_gpio
  .data.rccconfigDefault
-                0x2000013c        0x8 ./Output/Component/Bootloader/Bootloader.o
-                0x2000013c                rccconfigDefault
+                0x20000010        0x8 ./Output/Component/Bootloader/Bootloader.o
+                0x20000010                rccconfigDefault
  .data.uartConfigDefault
-                0x20000144       0x34 ./Output/Component/Bootloader/Bootloader.o
-                0x20000144                uartConfigDefault
+                0x20000018       0x34 ./Output/Component/Bootloader/Bootloader.o
+                0x20000018                uartConfigDefault
  .data.UART_List
-                0x20000178        0xc ./Output/Component/Uart_Lib/UART_Handmade.o
-                0x20000178                UART_List
-                0x20000184                . = ALIGN (0x4)
-                0x20000184                _edata = .
+                0x2000004c        0xc ./Output/Component/Uart_Lib/UART_Handmade.o
+                0x2000004c                UART_List
+                0x20000058                . = ALIGN (0x4)
+                0x20000058                _edata = .
 
-.igot.plt       0x20000184        0x0 load address 0x0800114c
- .igot.plt      0x20000184        0x0 ./Output/main/main.o
+.igot.plt       0x20000058        0x0 load address 0x08001168
+ .igot.plt      0x20000058        0x0 ./Output/main/main.o
 
-.bss            0x20000184       0x50 load address 0x0800114c
-                0x20000184                _sbss = .
+.bss            0x20000058       0x50 load address 0x08001168
+                0x20000058                _sbss = .
  *(.bss*)
  .bss.DataToOTA
-                0x20000184       0x3c ./Output/main/main.o
-                0x20000184                DataToOTA
+                0x20000058       0x3c ./Output/main/main.o
+                0x20000058                DataToOTA
  .bss.dataToOTA
-                0x200001c0        0x4 ./Output/Component/Bootloader/Bootloader.o
-                0x200001c0                dataToOTA
- .bss.Address   0x200001c4        0x4 ./Output/Component/HexFileProcessing/HexFileProcessing.o
-                0x200001c4                Address
- .bss.DataMask  0x200001c8        0x4 ./Output/Component/HexFileProcessing/HexFileProcessing.o
-                0x200001c8                DataMask
+                0x20000094        0x4 ./Output/Component/Bootloader/Bootloader.o
+                0x20000094                dataToOTA
+ .bss.Address   0x20000098        0x4 ./Output/Component/HexFileProcessing/HexFileProcessing.o
+                0x20000098                Address
+ .bss.DataMask  0x2000009c        0x4 ./Output/Component/HexFileProcessing/HexFileProcessing.o
+                0x2000009c                DataMask
  .bss.Frequency_RCC
-                0x200001cc        0x4 ./Output/Component/RCC_Lib/RCC_Handmade.o
-                0x200001cc                Frequency_RCC
+                0x200000a0        0x4 ./Output/Component/RCC_Lib/RCC_Handmade.o
+                0x200000a0                Frequency_RCC
  .bss.HPRE_Prescaler
-                0x200001d0        0x1 ./Output/Component/RCC_Lib/RCC_Handmade.o
-                0x200001d0                HPRE_Prescaler
+                0x200000a4        0x1 ./Output/Component/RCC_Lib/RCC_Handmade.o
+                0x200000a4                HPRE_Prescaler
  .bss.PPRE1_Prescaler
-                0x200001d1        0x1 ./Output/Component/RCC_Lib/RCC_Handmade.o
-                0x200001d1                PPRE1_Prescaler
+                0x200000a5        0x1 ./Output/Component/RCC_Lib/RCC_Handmade.o
+                0x200000a5                PPRE1_Prescaler
  .bss.PPRE2_Prescaler
-                0x200001d2        0x1 ./Output/Component/RCC_Lib/RCC_Handmade.o
-                0x200001d2                PPRE2_Prescaler
+                0x200000a6        0x1 ./Output/Component/RCC_Lib/RCC_Handmade.o
+                0x200000a6                PPRE2_Prescaler
  *(COMMON)
-                0x200001d4                . = ALIGN (0x4)
- *fill*         0x200001d3        0x1 
-                0x200001d4                _ebss = .
+                0x200000a8                . = ALIGN (0x4)
+ *fill*         0x200000a7        0x1 
+                0x200000a8                _ebss = .
 
-.heap           0x200001d4      0x804 load address 0x0800114c
-                0x200001d8                . = ALIGN (0x8)
- *fill*         0x200001d4        0x4 
-                0x200001d8                _sheap = .
-                0x200009d8                . = (. + _heap_size)
- *fill*         0x200001d8      0x800 
-                0x200009d8                _eheap = .
+.heap           0x200000a8      0x800 load address 0x08001168
+                0x200000a8                . = ALIGN (0x8)
+                0x200000a8                _sheap = .
+                0x200008a8                . = (. + _heap_size)
+ *fill*         0x200000a8      0x800 
+                0x200008a8                _eheap = .
 
-.stack          0x200009d8        0x0 load address 0x0800114c
+.stack          0x200008a8        0x0 load address 0x08001168
                 0x20005000                _estack = (ORIGIN (RAM) + LENGTH (RAM))
                 0x20004800                _sstack = (_estack - _stack_size)
 OUTPUT(Output/STM32_RUN.elf elf32-littlearm)
@@ -546,7 +502,6 @@ DataToOTA                                         ./Output/main/main.o
 DebugMon_Handler                                  ./Output/main/STM32_Startup.o
 Default_Handler                                   ./Output/main/STM32_Startup.o
 Delay_SysTick                                     ./Output/Component/SysTick_Lib/Systick_Handmade.o
-                                                  ./Output/main/main.o
 Disable_Intterupt_NVIC                            ./Output/Component/Nvic_Lib/NVIC_Handmade.o
 EXTI0_IRQHandler                                  ./Output/main/STM32_Startup.o
 EXTI15_10_IRQHandler                              ./Output/main/STM32_Startup.o
@@ -599,6 +554,8 @@ PPRE1_Prescaler                                   ./Output/Component/RCC_Lib/RCC
 PPRE2_Prescaler                                   ./Output/Component/RCC_Lib/RCC_Handmade.o
 PVD_IRQHandler                                    ./Output/main/STM32_Startup.o
 PendSV_Handler                                    ./Output/main/STM32_Startup.o
+RCC_DeInit                                        ./Output/Component/RCC_Lib/RCC_Handmade.o
+                                                  ./Output/Component/Bootloader/Bootloader.o
 RCC_IRQHandler                                    ./Output/main/STM32_Startup.o
 RTC_Alarm_IRQHandler                              ./Output/main/STM32_Startup.o
 RTC_IRQHandler                                    ./Output/main/STM32_Startup.o
@@ -671,8 +628,6 @@ __aeabi_ui2f                                      c:/gnu_toolchain/gcc_new/bin/.
                                                   ./Output/Component/Uart_Lib/UART_Handmade.o
 __aeabi_ul2f                                      c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
 __divsf3                                          c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
-__errno                                           c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-errno.o)
-                                                  ./Output/Component/Syscall/Syscall_Handmade.o
 __fixunssfsi                                      c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
 __floatdisf                                       c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
 __floatsisf                                       c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
@@ -680,32 +635,17 @@ __floatundisf                                     c:/gnu_toolchain/gcc_new/bin/.
 __floatunsisf                                     c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
 __mulsf3                                          c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
                                                   c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_mulsf3.o)
-__sf_fake_stderr                                  c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
-__sf_fake_stdin                                   c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
-__sf_fake_stdout                                  c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
 __subsf3                                          c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
-_ebss                                             ./Output/Component/Syscall/Syscall_Handmade.o
-                                                  ./Output/main/STM32_Startup.o
+_ebss                                             ./Output/main/STM32_Startup.o
 _edata                                            ./Output/main/STM32_Startup.o
-_eheap                                            ./Output/Component/Syscall/Syscall_Handmade.o
-_eisr                                             ./Output/main/STM32_Startup.o
-_estack                                           ./Output/Component/Syscall/Syscall_Handmade.o
-                                                  ./Output/main/STM32_Startup.o
-_etext                                            ./Output/Component/Syscall/Syscall_Handmade.o
-_global_impure_ptr                                c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
-_impure_ptr                                       c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-impure.o)
-                                                  c:/gnu_toolchain/gcc_new/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libc_nano.a(lib_a-errno.o)
+_estack                                           ./Output/main/STM32_Startup.o
 _la_data                                          ./Output/main/STM32_Startup.o
-_la_isr                                           ./Output/main/STM32_Startup.o
-_sbrk                                             ./Output/Component/Syscall/Syscall_Handmade.o
 _sbss                                             ./Output/main/STM32_Startup.o
 _sdata                                            ./Output/main/STM32_Startup.o
-_sheap                                            ./Output/Component/Syscall/Syscall_Handmade.o
-_sisr                                             ./Output/main/STM32_Startup.o
-_sstack                                           ./Output/Component/Syscall/Syscall_Handmade.o
 config_gpio                                       ./Output/Component/Bootloader/Bootloader.o
 dataToOTA                                         ./Output/Component/Bootloader/Bootloader.o
 enableSWD                                         ./Output/Component/GPIO_Lib/GPIO_Handmade.o
+firmwareFlag                                      ./Output/Component/Bootloader/Bootloader.o
 getFrequencyAHB                                   ./Output/Component/RCC_Lib/RCC_Handmade.o
 getFrequencyAPB1                                  ./Output/Component/RCC_Lib/RCC_Handmade.o
                                                   ./Output/Component/Uart_Lib/UART_Handmade.o
@@ -713,14 +653,6 @@ getFrequencyAPB2                                  ./Output/Component/RCC_Lib/RCC
                                                   ./Output/Component/Uart_Lib/UART_Handmade.o
 getFrequencyRCC                                   ./Output/Component/RCC_Lib/RCC_Handmade.o
                                                   ./Output/Component/SysTick_Lib/Systick_Handmade.o
-get_flash_used_percentage                         ./Output/Component/Syscall/Syscall_Handmade.o
-get_free_flash                                    ./Output/Component/Syscall/Syscall_Handmade.o
-get_free_heap                                     ./Output/Component/Syscall/Syscall_Handmade.o
-get_free_ram                                      ./Output/Component/Syscall/Syscall_Handmade.o
-get_free_stack                                    ./Output/Component/Syscall/Syscall_Handmade.o
-get_heap_used_percentage                          ./Output/Component/Syscall/Syscall_Handmade.o
-get_ram_used_percentage                           ./Output/Component/Syscall/Syscall_Handmade.o
-get_stack_used_percentage                         ./Output/Component/Syscall/Syscall_Handmade.o
 init_RCC                                          ./Output/Component/RCC_Lib/RCC_Handmade.o
                                                   ./Output/Component/Bootloader/Bootloader.o
 interruptDisable                                  ./Output/Component/Uart_Lib/UART_Handmade.o

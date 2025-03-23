@@ -9,7 +9,8 @@ uint8_t CalculateChecksum(uint8_t* record, uint8_t length) {
     return (uint8_t)(~sum + 1);  // Trả về giá trị bổ sung (two's complement)
 }
 
-
+uint32_t *line = (uint32_t*)0x08009000;
+uint32_t checksum ;
 void parseHex(Data_Process_t *path_Hex, uint8_t *ArrayData){
     
     path_Hex->recordType = (RecordType_t)ArrayData[3];
@@ -37,7 +38,17 @@ void parseHex(Data_Process_t *path_Hex, uint8_t *ArrayData){
         /* code */
         break;
     } 
+	
     path_Hex->checkSum = path_Hex->ArrayBuff[path_Hex->byteCount + 4];
+		checksum = CalculateChecksum(path_Hex->ArrayBuff,path_Hex->byteCount + 4);
+		if (checksum != path_Hex->checkSum) {
+			TogglePin(Port_C,PIN_13);
+			*line = path_Hex->addressOffset;
+			 line++;
+			//*(uin32_t)line ++;
+			//TransmitDataUART(UART_1,&line,1);
+		}
+		
 }
 uint32_t DataMask;
 uint32_t Address ;
@@ -72,7 +83,7 @@ void LoadDataToFlash(Data_Process_t *path_Hex){
 }
 void receiveDataToOTA(Data_Process_t *DataToOTA){
     DataToOTA->byteCount = DataToOTA->ArrayBuff[0];
-	if( DataToOTA->eachByteData == END_LINE_DATA){
+	if( DataToOTA->ArrayIndex >= DataToOTA->byteCount + 5){
 		DataToOTA->Flag_Data_Full_Line = 1;
 		DataToOTA->ArrayIndex = 0;
 	}
