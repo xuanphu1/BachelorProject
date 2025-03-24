@@ -177,17 +177,6 @@ void Reset_Handler(void) {
             *pDst++ = *pSrc++;
         }
     
-        // /* Copy bảng vector (.isr_vector) từ FLASH (LMA) sang RAM (VMA) */
-        // uint32_t size_isr = (uint32_t)&_eisr - (uint32_t)&_sisr;
-        // uint8_t *pDst_Ram = (uint8_t*)&_sisr;      // Đích: VMA của bảng vector trong RAM
-        // uint8_t *pSrc_Flash = (uint8_t*)&_la_isr;    // Nguồn: LMA của bảng vector trong FLASH
-        // for (uint32_t i = 0; i < size_isr; i++){
-        //     pDst_Ram[i] = pSrc_Flash[i];
-        // }
-    
-        // /* Thiết lập VTOR trỏ tới bảng vector trong RAM */
-        //VTOR = (uint32_t)&_sisr;
-    
         /* Xóa vùng bss */
         size = (uint32_t)&_ebss - (uint32_t)&_sbss;
         pDst = (uint8_t*)&_sbss;

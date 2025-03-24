@@ -12,7 +12,7 @@ void USART1_IRQHandler(void) {
 int main(void)
 {
 	
-  InitBootLoader(&DataToOTA); 
+  InitBootLoader(&DataToOTA);
   while (1)
   {
     BootLoader();

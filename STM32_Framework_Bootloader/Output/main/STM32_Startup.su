@@ -1,2 +1,2 @@
-main/STM32_Startup.c:208:6:Default_Handler	0	static
-main/STM32_Startup.c:177:6:Reset_Handler	8	static
+main/STM32_Startup.c:207:6:Default_Handler	0	static
+main/STM32_Startup.c:176:6:Reset_Handler	8	static

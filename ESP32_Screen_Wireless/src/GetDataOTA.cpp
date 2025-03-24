@@ -50,7 +50,7 @@ size_t UpdateClass::writeStream(Stream &data) {
     uint32_t total = size();
     Serial.println("Start FOTA ...");
     // Vòng lặp: đọc từng dòng của file .hex cho đến khi không còn dữ liệu hoặc đạt đủ số byte cần ghi
-    //if (deviceManager.modeActive == OTA_MODE){
+    if (deviceManager.modeActive == OTA_MODE){
         while (remaining()) {
             // Đọc một dòng đến ký tự xuống dòng '\n'
             String line = data.readStringUntil('\n');
@@ -111,7 +111,7 @@ size_t UpdateClass::writeStream(Stream &data) {
             dataManager.dataEachLine_HEX_OTA = nullptr;
 
         }
-    //}
+    }
     
     deviceManager.modeActive = NORMAL_MODE;
     return written;

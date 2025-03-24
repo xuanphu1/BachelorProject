@@ -9,7 +9,7 @@
 #define _VTOR (*((volatile uint32_t *)0xE000ED08))
 
 #define SCB_BASE_HANDMADE            	(0xE000E000UL)  
-#define SHCSR_Handmade      			(SCB_BASE_HANDMADE + 0x24)            //*!< Offset: 0x024
+#define SHCSR_Handmade      					(SCB_BASE_HANDMADE + 0x24)            //*!< Offset: 0x024
 
 
 
@@ -38,3 +38,15 @@ void Jump_To_Application(uint32_t AppStartAddress);
 
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+

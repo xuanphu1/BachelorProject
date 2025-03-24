@@ -126,6 +126,8 @@ GPIO_Error_t WriteMultiPins(Port_t port, uint32_t pin_mask, uint32_t value);
 GPIO_Error_t ReadMultiPins(Port_t port, Pin_gpio_t *pins, uint8_t *output_array, uint8_t pin_count);
 GPIO_Error_t enableSWD(void);
 
+void ON_Led_Hardware(void);
+void OFF_Led_Hardware(void);
 
 #endif // GPIO_HANDMADE_H
 

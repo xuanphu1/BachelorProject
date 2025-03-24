@@ -1,0 +1,13 @@
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\InitSystemPeripheral.c
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\InitSystemPeripheral.h
+.\stm32_nolibrary\initsystemperipheral.o: C:\Keli_V5_STM32\ARM\ARMCC\Bin\..\include\stdio.h
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\ADC_Handmade.h
+.\stm32_nolibrary\initsystemperipheral.o: C:\Keli_V5_STM32\ARM\ARMCC\Bin\..\include\stdint.h
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\RCC_Handmade.h
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\Flash_Handmade.h
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\GPIO_Handmade.h
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\DMA_Handmade.h
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\NVIC_Handmade.h
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\Systick_Handmade.h
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\Timer_Handmade.h
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\UART_Handmade.h

@@ -49,11 +49,11 @@ void Flash_Lock(void);
 // Hàm ghi 16-bit vào Flash memory
 void Flash_Write(uint32_t address, uint32_t data);
 // Hàm xóa một trang Flash
-void Flash_ErasePage(uint32_t pageAddress);
+void Flash_ErasePage(uint8_t page);
 void Flash_WriteHalfWord(uint32_t address, uint16_t data);
 void Flash_WriteByte(uint32_t address, uint8_t data);
 void startLoadData(void);
 FLASH_Error_t Flash_AdjustForCLK(uint32_t Frequency);
-FLASH_Error_t Flash_EraseRange(uint32_t startAddress, uint8_t page);
+FLASH_Error_t Flash_EraseRange(uint32_t startAddress, uint8_t pageCount);
 
 #endif // FLASH_HANDMADE_H  

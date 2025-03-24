@@ -87,8 +87,8 @@ void ReciveUART(uint8_t Data){
         
 		DataManager->flagFullData = 1;
 		DataManager->idxData = 0;
-		DataManager->SetAuto = DataManager->UartBuff[6];
-		DataManager->modeActive = DataManager->UartBuff[7];
+		DataManager->SetAuto = (Set_Auto_t)DataManager->UartBuff[6];
+		DataManager->modeActive = (Mode_t)DataManager->UartBuff[7];
 		
 	}
 	else {
@@ -128,11 +128,40 @@ void getDataSensor_ControlDevice(void){
 
 void InitDataManager(DataManager_t *DataManager_t){
     DataManager = DataManager_t;
-
+		
     // Set up DMA that to Data from ADC is saved at Struct DataManager
-    AddressPeripheral(DMA_CHANNEL_1,&(ADC1_HANDMADE->ADC_DR));
+		
+    AddressPeripheral(DMA_CHANNEL_1,(uint32_t)&(ADC1_HANDMADE->ADC_DR));
     AddressPeripheral(DMA_CHANNEL_1,(uint32_t)DataManager->DataSensor);
 
+}
+
+
+void SignalModeNormal_LED(void){
+	ON_Led_Hardware();
+	Delay_SysTick(50);
+	OFF_Led_Hardware();
+	Delay_SysTick(50);
+	
+	ON_Led_Hardware();
+	Delay_SysTick(50);
+	OFF_Led_Hardware();
+	Delay_SysTick(50);
+	
+	ON_Led_Hardware();
+	Delay_SysTick(50);
+	OFF_Led_Hardware();
+	Delay_SysTick(50);
+	
+	ON_Led_Hardware();
+	Delay_SysTick(50);
+	OFF_Led_Hardware();
+	Delay_SysTick(50);
+	
+	ON_Led_Hardware();
+	Delay_SysTick(50);
+	OFF_Led_Hardware();
+	Delay_SysTick(50);
 }
 
 void UART_Controller(void){
@@ -140,5 +169,8 @@ void UART_Controller(void){
     getDataSensor_ControlDevice();
     InitDataToESP32();
     TransmitDataUART(UART_1,(uint8_t*)&DataManager->DataToESP32,strlen_custom(DataManager->DataToESP32));
-
+		//SignalModeNormal_LED();
+		Delay_SysTick(2500);
 }
+
+

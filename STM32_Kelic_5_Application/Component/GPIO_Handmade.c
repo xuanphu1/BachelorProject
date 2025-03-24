@@ -139,5 +139,12 @@ GPIO_Error_t enableSWD(void) {
     return GPIO_OK;
 }
 
+void ON_Led_Hardware(void){
+	WritePin(Port_C,PIN_13,GPIO_LOW);
+}
+void OFF_Led_Hardware(void){
+	WritePin(Port_C,PIN_13,GPIO_HIGH);
+}
+
 
 

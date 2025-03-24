@@ -1,7 +1,7 @@
 #include "Bootloader.h"
 
 Data_Process_t *dataToOTA;
-Select_App_t firmwareFlag __attribute__((section(".user_data"))) = APP_1_ENABLE;
+const Select_App_t firmwareFlag __attribute__((section(".user_data"))) = APP_1_ENABLE;
 
 Custom_USART_Config_t uartConfigDefault = {
     .usartEnable = Custom_UE_ENABLE,
@@ -28,16 +28,6 @@ GPIO_config_t config_led = {
 	.cnf_mode = CNF_MODE_00
 };
 
-
-static void ClearPendingFault(){
-    *((volatile uint32_t *)SHCSR_Handmade) &= ~((1UL << 16) | (1UL << 17) | (1UL << 18));
-}
-
-static void DisableAllInterrupt(void)
-{
-   __asm volatile ("cpsid i" : : : "memory");
-}
-
 void InitBootLoader(Data_Process_t *DataOTA){
     dataToOTA = DataOTA;
     init_RCC(&rccconfigDefault);
@@ -59,9 +49,6 @@ void Jump_To_Application(uint32_t AppStartAddress)
     // 2. Lấy địa chỉ Reset_Handler của ứng dụng
     void (*App_Reset_Handler)(void) = 
         (void (*)(void))(*(volatile uint32_t*)(AppStartAddress + 4));
-
-    // 3. Vô hiệu hóa tất cả ngắt
-    DisableAllInterrupt();
     
     // 4. Tắt SysTick
     SYSTICK_HANDMADE->SYST_CSR = 0;
@@ -77,12 +64,13 @@ void Jump_To_Application(uint32_t AppStartAddress)
     __set_MSP(topOfMainStack);
 
     // 8. Gán lại bảng vector
-    _VTOR = AppStartAddress;
+    NVIC_SetVectorTable(AppStartAddress);
 
 
     // 10. Nhảy vào ứng dụng
     App_Reset_Handler();
 }
+
 void BootLoader(void){
 
     if (dataToOTA->Flag_Data_Full_Line){
@@ -91,13 +79,23 @@ void BootLoader(void){
         TogglePin(Port_C,PIN_13);
     }
     if(dataToOTA->StatusProcess == 1) {
-        if((Select_App_t)firmwareFlag == APP_1_ENABLE) {
+
+        if(*((uint8_t*)0x0800FC00)  == APP_1_ENABLE) {
             Flash_EraseRange(APP_2_START_ADDRESS,PAGE_MEMORY_EACH_APP);
-            firmwareFlag = APP_2_ENABLE;
+            Flash_EraseRange(APP_2_START_ADDRESS,PAGE_MEMORY_EACH_APP);
+            Flash_ErasePage(63);
+            Flash_ErasePage(63);
+            Flash_Write((uint32_t)(&firmwareFlag),APP_2_ENABLE);
+            Flash_Write((uint32_t)(&firmwareFlag),APP_2_ENABLE);
             Jump_To_Application(APP_1_START_ADDRESS);
-        } else {
+        } 
+        if(*((uint8_t*)0x0800FC00) == APP_2_ENABLE) {
             Flash_EraseRange(APP_1_START_ADDRESS,PAGE_MEMORY_EACH_APP);
-            firmwareFlag = APP_1_ENABLE;
+            Flash_EraseRange(APP_1_START_ADDRESS,PAGE_MEMORY_EACH_APP);
+            Flash_ErasePage(63);
+            Flash_ErasePage(63);
+            Flash_Write((uint32_t)&firmwareFlag,APP_1_ENABLE);
+            Flash_Write((uint32_t)&firmwareFlag,APP_1_ENABLE);
             Jump_To_Application(APP_2_START_ADDRESS);
         }
     }

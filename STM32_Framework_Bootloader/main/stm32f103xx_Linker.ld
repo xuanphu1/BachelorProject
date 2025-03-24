@@ -8,8 +8,9 @@ _stack_size = 2048;  /* 2KB Stack */
 /* Định nghĩa bộ nhớ */
 MEMORY
 {
-    FLASH (rx)  : ORIGIN = 0x08000000, LENGTH = 64K
-    RAM   (rwx) : ORIGIN = 0x20000000, LENGTH = 20K
+    FLASH (rx)         : ORIGIN = 0x08000000, LENGTH = 63K
+    FIRMWAREFLAG (rx)  : ORIGIN = 0x0800FC00, LENGTH = 1k
+    RAM (rwx)          : ORIGIN = 0x20000000, LENGTH = 20K
 }
 
 SECTIONS
@@ -20,7 +21,7 @@ SECTIONS
         _sisr = .;                         /* VMA của bảng vector */
         KEEP(*(.isr_vector))                /* Giữ bảng vector */
         _eisr = .;
-    } > FLASH
+    }> RAM AT> FLASH
 
     /* Lấy địa chỉ tải (LMA) của bảng vector từ FLASH */
     _la_isr = LOADADDR(.isr_vector);
@@ -37,11 +38,16 @@ SECTIONS
     /* Địa chỉ tải của dữ liệu khởi tạo nằm trong FLASH */
     _la_data = LOADADDR(.data);
 
-    /* Vùng dữ liệu đã khởi tạo trong RAM, bao gồm section .user_data */
+    /* Section chứa dữ liệu của firmware flag */
+    .user_data :
+    {
+        . = ALIGN(4);
+        KEEP(*(.user_data))
+    } > FIRMWAREFLAG
+
     .data :
     {
         _sdata = .;
-        *(.user_data)
         *(.data*)
         . = ALIGN(4);
         _edata = .;

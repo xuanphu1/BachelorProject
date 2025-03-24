@@ -1,25 +1,16 @@
 #ifndef __BOOTLOADER_H__
 #define __BOOTLOADER_H__
 #include "HexFileProcessing.h"
-
-
+#include "SCB_Base.h"
 
 typedef enum {
     APP_1_ENABLE = 1,
     APP_2_ENABLE = 2
 }Select_App_t;
 
-
-
-
-#define _VTOR (*((volatile uint32_t *)0xE000ED08))
-
 #define __set_MSP(addr)  __asm__ volatile ("MSR msp, %0" :: "r" (addr) : )
 
-#define SCB_BASE_HANDMADE            	(0xE000E000UL)  
-#define SHCSR_Handmade      			(SCB_BASE_HANDMADE + 0x24)            //*!< Offset: 0x024
-
-#define PAGE_MEMORY_EACH_APP 28
+#define PAGE_MEMORY_EACH_APP 27
 
 // Capcity of Bootloader is 8KB
 #define APP_1_START_ADDRESS 0x08002000 // Page 8 -> Page 36

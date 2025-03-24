@@ -26,7 +26,7 @@
 .\stm32_nolibrary\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 .\stm32_nolibrary\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 .\stm32_nolibrary\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
-.\stm32_nolibrary\main.o: ..\Component\Config.h
+.\stm32_nolibrary\main.o: ..\Component\UART_Data_Manager.h
 .\stm32_nolibrary\main.o: ..\Component\DMA_Handmade.h
 .\stm32_nolibrary\main.o: ..\Component\RCC_Handmade.h
 .\stm32_nolibrary\main.o: C:\Keli_V5_STM32\ARM\ARMCC\Bin\..\include\stdio.h
@@ -37,4 +37,5 @@
 .\stm32_nolibrary\main.o: ..\Component\UART_Handmade.h
 .\stm32_nolibrary\main.o: ..\Component\NVIC_Handmade.h
 .\stm32_nolibrary\main.o: ..\Component\Systick_Handmade.h
-.\stm32_nolibrary\main.o: ..\Component\HexFileProcessing.h
+.\stm32_nolibrary\main.o: ..\Component\Bootloader.h
+.\stm32_nolibrary\main.o: ..\Component\InitSystemPeripheral.h

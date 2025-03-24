@@ -50,8 +50,9 @@ void Flash_Lock(void)
     FLASH_HANDMADE->FLASH_CR |= FLASH_CR_LOCK_HANDMADE;
 }
 
-void Flash_ErasePage(uint32_t pageAddress)
+void Flash_ErasePage(uint8_t page)
 {
+    uint32_t pageAddress = page * FLASH_PAGE_SIZE;
     // Chờ cho đến khi không còn thao tác Flash nào đang diễn ra
     while (FLASH_HANDMADE->FLASH_SR & FLASH_SR_BSY_HANDMADE);
 
@@ -125,19 +126,20 @@ void Flash_Write(uint32_t address, uint32_t data)
     Flash_Lock();
 }
 
-FLASH_Error_t Flash_EraseRange(uint32_t startAddress, uint8_t page)
+FLASH_Error_t Flash_EraseRange(uint32_t startAddress, uint8_t pageCount)
 {
-    // Tính số trang cần xóa, làm tròn lên nếu cần.
-    //uint32_t numPages = (length + FLASH_PAGE_SIZE - 1) / FLASH_PAGE_SIZE;
+    // Tính số trang bắt đầu từ địa chỉ startAddress
+    uint32_t startPage = startAddress / FLASH_PAGE_SIZE;
 
-    for (uint32_t i = 0; i < page; i++)
+    // Xóa từng trang liên tiếp từ startPage
+    for (uint32_t i = 0; i < pageCount; i++)
     {
-        uint32_t pageAddress = startAddress + (i * FLASH_PAGE_SIZE);
-        Flash_ErasePage(pageAddress);
+        Flash_ErasePage(startPage + i);
     }
     
     return FLASH_OK;
 }
+
 
 // Hàm ghi 2 byte vào Flash memory
 void Flash_WriteHalfWord(uint32_t address, uint16_t data)

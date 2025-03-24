@@ -275,7 +275,7 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x8002000</StartAddress>
+                <StartAddress>0x8009000</StartAddress>
                 <Size>0x10000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
@@ -555,11 +555,6 @@
               <FilePath>..\Component\ADC_Handmade.c</FilePath>
             </File>
             <File>
-              <FileName>Config.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Component\Config.c</FilePath>
-            </File>
-            <File>
               <FileName>DMA_Handmade.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Component\DMA_Handmade.c</FilePath>
@@ -573,11 +568,6 @@
               <FileName>GPIO_Handmade.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Component\GPIO_Handmade.c</FilePath>
-            </File>
-            <File>
-              <FileName>HexFileProcessing.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Component\HexFileProcessing.c</FilePath>
             </File>
             <File>
               <FileName>NVIC_Handmade.c</FileName>
@@ -603,6 +593,21 @@
               <FileName>UART_Handmade.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Component\UART_Handmade.c</FilePath>
+            </File>
+            <File>
+              <FileName>InitSystemPeripheral.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\InitSystemPeripheral.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART_Data_Manager.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\UART_Data_Manager.c</FilePath>
+            </File>
+            <File>
+              <FileName>Bootloader.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\Bootloader.c</FilePath>
             </File>
           </Files>
         </Group>

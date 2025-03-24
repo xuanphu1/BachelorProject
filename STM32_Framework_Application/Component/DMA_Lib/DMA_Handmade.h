@@ -115,6 +115,12 @@ typedef enum {
 // Hàm cập nhật với kiểu trả về
 DMA_Error_t DMA_Init(DMA_Config_t *dmaConfig);
 DMA_Error_t DMA_Start(DMAChannel_t channel);
+
+
+DMA_Error_t AddressPeripheral(DMAChannel_t channel,uint32_t address_start);
+DMA_Error_t AddressMemory(DMAChannel_t channel,uint32_t address_start);
+
+
 #endif // DMA_HANDMADE_H
 
 
