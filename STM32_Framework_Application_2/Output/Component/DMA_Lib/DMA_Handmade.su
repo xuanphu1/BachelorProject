@@ -1,0 +1,4 @@
+Component/DMA_Lib/DMA_Handmade.c:8:13:DMA_Init	8	static
+Component/DMA_Lib/DMA_Handmade.c:61:13:DMA_Start	8	static
+Component/DMA_Lib/DMA_Handmade.c:82:13:AddressPeripheral	0	static
+Component/DMA_Lib/DMA_Handmade.c:86:13:AddressMemory	0	static

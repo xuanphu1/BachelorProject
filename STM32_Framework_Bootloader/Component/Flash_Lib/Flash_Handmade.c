@@ -50,44 +50,74 @@ void Flash_Lock(void)
     FLASH_HANDMADE->FLASH_CR |= FLASH_CR_LOCK_HANDMADE;
 }
 
-void Flash_ErasePage(uint8_t page)
+FLASH_Error_t Flash_ErasePage(uint32_t pageAddress)
 {
-    uint32_t pageAddress = page * FLASH_PAGE_SIZE;
-    // Chờ cho đến khi không còn thao tác Flash nào đang diễn ra
+    // Kiểm tra tham số
+    #define FLASH_START 0x08000000
+    #define FLASH_END   0x0801FFFF // Điều chỉnh theo kích thước Flash
+    if (pageAddress < FLASH_START || pageAddress > FLASH_END) {
+        return FLASH_NOT_OK;
+    }
+
+    // Chờ Flash không bận
     while (FLASH_HANDMADE->FLASH_SR & FLASH_SR_BSY_HANDMADE);
 
-    // Mở khóa Flash memory
-    Flash_Unlock();
+    // Tắt ngắt để tránh xung đột
 
-    // Đặt bit PER trong FLASH_CR để kích hoạt chế độ xóa trang
+
+    // Mở khóa Flash nếu cần
+    if (FLASH_HANDMADE->FLASH_CR & FLASH_CR_LOCK_HANDMADE) {
+        Flash_Unlock();
+    }
+
+    // Kích hoạt chế độ xóa trang
     FLASH_HANDMADE->FLASH_CR |= FLASH_CR_PER_HANDMADE;
-
-    // Đặt địa chỉ của trang cần xóa vào FLASH_AR
     FLASH_HANDMADE->FLASH_AR = pageAddress;
-
-    // Đặt bit STRT trong FLASH_CR để bắt đầu thao tác xóa
     FLASH_HANDMADE->FLASH_CR |= FLASH_CR_STRT_HANDMADE;
 
-    // Chờ cho đến khi thao tác xóa hoàn tất
-    while (FLASH_HANDMADE->FLASH_SR & FLASH_SR_BSY_HANDMADE);  // Chờ cho đến khi Flash không còn bận
+    // Chờ hoàn tất
+    while (FLASH_HANDMADE->FLASH_SR & FLASH_SR_BSY_HANDMADE);
 
-    // Kiểm tra lỗi xóa
-    if (FLASH_HANDMADE->FLASH_SR & FLASH_SR_PGERR_HANDMADE)
-    {
-        // Nếu có lỗi, xóa cờ PGERR và xử lý lỗi
-        FLASH_HANDMADE->FLASH_SR = FLASH_SR_PGERR_HANDMADE;  // Xóa lỗi PGERR
+    // Kiểm tra lỗi
+    if (FLASH_HANDMADE->FLASH_SR & FLASH_SR_PGERR_HANDMADE) {
+        FLASH_HANDMADE->FLASH_SR = FLASH_SR_PGERR_HANDMADE;
+        FLASH_HANDMADE->FLASH_CR &= ~FLASH_CR_PER_HANDMADE; // Tắt PER
+        Flash_Lock();
+
+        return FLASH_NOT_OK;
+    }
+    if (FLASH_HANDMADE->FLASH_SR & FLASH_SR_WRPRTERR_HANDMADE) {
+        FLASH_HANDMADE->FLASH_SR = FLASH_SR_WRPRTERR_HANDMADE;
+        FLASH_HANDMADE->FLASH_CR &= ~FLASH_CR_PER_HANDMADE;
+        Flash_Lock();
+
+        return FLASH_NOT_OK;
     }
 
-    // Kiểm tra cờ EOP (End of Operation) để xác nhận xóa hoàn tất
-    if (FLASH_HANDMADE->FLASH_SR & FLASH_SR_EOP_HANDMADE)
-    {
-        // Nếu thao tác xóa hoàn tất, xóa cờ EOP
+    // Xóa cờ EOP và tắt chế độ xóa
+    if (FLASH_HANDMADE->FLASH_SR & FLASH_SR_EOP_HANDMADE) {
         FLASH_HANDMADE->FLASH_SR = FLASH_SR_EOP_HANDMADE;
     }
+    FLASH_HANDMADE->FLASH_CR &= ~FLASH_CR_PER_HANDMADE;
 
-    // Khóa lại Flash memory
+    // Khóa Flash và bật lại ngắt
     Flash_Lock();
+
+
+    return FLASH_OK;
 }
+
+FLASH_Error_t Flash_EraseRange(uint32_t startAddress, uint8_t pageCount)
+{
+    // Xóa từng trang liên tiếp từ startPage
+    for (uint32_t i = 0; i < pageCount; i++)
+    {
+        Flash_ErasePage(startAddress + i*1024);
+    }
+    
+    return FLASH_OK;
+}
+
 
 // Hàm ghi dữ liệu vào Flash
 void Flash_Write(uint32_t address, uint32_t data)
@@ -123,22 +153,11 @@ void Flash_Write(uint32_t address, uint32_t data)
 
     // Xóa cờ lỗi và khóa lại Flash memory
     FLASH_HANDMADE->FLASH_SR = FLASH_SR_EOP_HANDMADE | FLASH_SR_PGERR_HANDMADE;  // Xóa cờ EOP và PGERR
+
+    FLASH_HANDMADE->FLASH_CR &= ~FLASH_CR_PG_HANDMADE;  // Tắt chế độ ghi
     Flash_Lock();
 }
 
-FLASH_Error_t Flash_EraseRange(uint32_t startAddress, uint8_t pageCount)
-{
-    // Tính số trang bắt đầu từ địa chỉ startAddress
-    uint32_t startPage = startAddress / FLASH_PAGE_SIZE;
-
-    // Xóa từng trang liên tiếp từ startPage
-    for (uint32_t i = 0; i < pageCount; i++)
-    {
-        Flash_ErasePage(startPage + i);
-    }
-    
-    return FLASH_OK;
-}
 
 
 // Hàm ghi 2 byte vào Flash memory
@@ -168,5 +187,6 @@ void Flash_WriteHalfWord(uint32_t address, uint16_t data)
 
     // Xóa cờ lỗi và khóa lại Flash memory
     FLASH_HANDMADE->FLASH_SR = FLASH_SR_EOP_HANDMADE | FLASH_SR_PGERR_HANDMADE;
+    FLASH_HANDMADE->FLASH_CR &= ~FLASH_CR_PG_HANDMADE;  // Tắt chế độ ghi
     Flash_Lock();
 }

@@ -1,6 +1,8 @@
 #include "main.h"
 #include "UART_Data_Manager.h"
 #include "InitSystemPeripheral.h"
+#include "FlashSTM32.h"
+#include "SCB_Base.h"
 
 
 DataManager_t Data_Manager = {	.modeActive = NORMAL_MODE,
@@ -9,6 +11,20 @@ DataManager_t Data_Manager = {	.modeActive = NORMAL_MODE,
 
 UART_HandleTypeDef huart1;
 
+typedef enum {
+
+    RST_HARDWARE = 0,
+    RST_BOOTLOADER
+
+}TypeRST_t;
+
+typedef enum {
+  APP_1_ENABLE = 1,
+  APP_2_ENABLE = 2
+}Select_App_t;
+
+#define FLAG_TYPE_RST           0x0800F800
+#define FIRMWARE_FLAG_ADDRESS   0x0800FC00
 
 void USART1_IRQHandler(void) {
 
@@ -30,8 +46,11 @@ int main(void)
       UART_Controller();
 			
 		} else {
-			NVIC_SystemReset() ;
-      //Jump_To_Application(BOOTLOADER_ADDRESS);
+			Flash_ErasePage(0x0800FC00);
+      Flash_WriteHalfWord(0x0800FC00,(APP_1_ENABLE) | (RST_BOOTLOADER << 8));
+
+     
+			NVIC_SystemReset_handmade() ;
 		}
 		
 		

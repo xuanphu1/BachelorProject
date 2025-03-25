@@ -169,7 +169,8 @@ void UART_Controller(void){
     getDataSensor_ControlDevice();
     InitDataToESP32();
     TransmitDataUART(UART_1,(uint8_t*)&DataManager->DataToESP32,strlen_custom(DataManager->DataToESP32));
-		//SignalModeNormal_LED();
+		SignalModeNormal_LED();
+		TogglePin(Port_C,PIN_13);
 		Delay_SysTick(2500);
 }
 

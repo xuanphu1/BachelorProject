@@ -39,7 +39,7 @@ typedef enum {
 #define FLASH_SR_BSY_HANDMADE         (1 << 0)     // Busy flag
 #define FLASH_SR_EOP_HANDMADE         (1 << 5)      // End of Operation flag
 #define FLASH_SR_PGERR_HANDMADE       (1 << 2)      // Programming error flag
-
+#define FLASH_SR_WRPRTERR_HANDMADE    (1 << 4) // Write Protection Error flag
 // Hàm mở khóa Flash memory
 void Flash_Unlock(void);
 
@@ -48,7 +48,7 @@ void Flash_Lock(void);
 // Hàm ghi 16-bit vào Flash memory
 void Flash_Write(uint32_t address, uint32_t data);
 // Hàm xóa một trang Flash
-void Flash_ErasePage(uint32_t pageAddress);
+FLASH_Error_t Flash_ErasePage(uint32_t pageAddress);
 void Flash_WriteHalfWord(uint32_t address, uint16_t data);
 void Flash_WriteByte(uint32_t address, uint8_t data);
 void startLoadData(void);

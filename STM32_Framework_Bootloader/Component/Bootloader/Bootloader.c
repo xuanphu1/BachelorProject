@@ -1,7 +1,7 @@
 #include "Bootloader.h"
 
 Data_Process_t *dataToOTA;
-const Select_App_t firmwareFlag __attribute__((section(".user_data"))) = APP_1_ENABLE;
+const uint16_t firmwareFlag __attribute__((section(".firmware_flag"))) = (uint16_t)(APP_1_ENABLE | (RST_HARDWARE << 8));
 
 Custom_USART_Config_t uartConfigDefault = {
     .usartEnable = Custom_UE_ENABLE,
@@ -38,8 +38,6 @@ void InitBootLoader(Data_Process_t *DataOTA){
     WritePin(Port_C,PIN_13,0);
 }
 
-
-
 void Jump_To_Application(uint32_t AppStartAddress)
 {
     
@@ -71,31 +69,37 @@ void Jump_To_Application(uint32_t AppStartAddress)
     App_Reset_Handler();
 }
 
+extern uint8_t flag;
+
+
 void BootLoader(void){
 
     if (dataToOTA->Flag_Data_Full_Line){
         LoadDataToFlash(dataToOTA);
         dataToOTA->Flag_Data_Full_Line = 0;
         TogglePin(Port_C,PIN_13);
+        dataToOTA->SignalLockReciveData = 1;
     }
     if(dataToOTA->StatusProcess == 1) {
 
-        if(*((uint8_t*)0x0800FC00)  == APP_1_ENABLE) {
-            Flash_EraseRange(APP_2_START_ADDRESS,PAGE_MEMORY_EACH_APP);
-            Flash_EraseRange(APP_2_START_ADDRESS,PAGE_MEMORY_EACH_APP);
-            Flash_ErasePage(63);
-            Flash_ErasePage(63);
-            Flash_Write((uint32_t)(&firmwareFlag),APP_2_ENABLE);
-            Flash_Write((uint32_t)(&firmwareFlag),APP_2_ENABLE);
+        if(*((uint8_t*)FIRMWARE_FLAG_ADDRESS)  == APP_1_ENABLE) {
+
+            if (dataToOTA->SignalLockReciveData == 1){
+                Flash_EraseRange(APP_2_START_ADDRESS,PAGE_MEMORY_EACH_APP);
+                Flash_ErasePage(FIRMWARE_FLAG_ADDRESS);
+                Flash_WriteHalfWord(FIRMWARE_FLAG_ADDRESS,(APP_1_ENABLE) | (RST_HARDWARE << 8));
+            }
+      
             Jump_To_Application(APP_1_START_ADDRESS);
         } 
-        if(*((uint8_t*)0x0800FC00) == APP_2_ENABLE) {
-            Flash_EraseRange(APP_1_START_ADDRESS,PAGE_MEMORY_EACH_APP);
-            Flash_EraseRange(APP_1_START_ADDRESS,PAGE_MEMORY_EACH_APP);
-            Flash_ErasePage(63);
-            Flash_ErasePage(63);
-            Flash_Write((uint32_t)&firmwareFlag,APP_1_ENABLE);
-            Flash_Write((uint32_t)&firmwareFlag,APP_1_ENABLE);
+        if(*((uint8_t*)FIRMWARE_FLAG_ADDRESS) == APP_2_ENABLE) {
+
+            if (dataToOTA->SignalLockReciveData == 1){
+                Flash_EraseRange(APP_1_START_ADDRESS,PAGE_MEMORY_EACH_APP);
+
+                Flash_ErasePage(FIRMWARE_FLAG_ADDRESS);
+                Flash_WriteHalfWord(FIRMWARE_FLAG_ADDRESS,(APP_2_ENABLE) | (RST_HARDWARE << 8));
+            }
             Jump_To_Application(APP_2_START_ADDRESS);
         }
     }

@@ -609,6 +609,16 @@
               <FileType>1</FileType>
               <FilePath>..\Component\Bootloader.c</FilePath>
             </File>
+            <File>
+              <FileName>FlashSTM32.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\FlashSTM32.c</FilePath>
+            </File>
+            <File>
+              <FileName>SCB_Base.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\SCB_Base.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

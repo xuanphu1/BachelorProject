@@ -8,9 +8,9 @@ _stack_size = 2048;  /* 2KB Stack */
 /* Định nghĩa bộ nhớ */
 MEMORY
 {
-    FLASH (rx)         : ORIGIN = 0x08000000, LENGTH = 63K
-    FIRMWAREFLAG (rx)  : ORIGIN = 0x0800FC00, LENGTH = 1k
-    RAM (rwx)          : ORIGIN = 0x20000000, LENGTH = 20K
+    FLASH (rx)                  : ORIGIN = 0x08000000, LENGTH = 63K
+    FIRMWAREFLAG (rx)           : ORIGIN = 0x0800FC00, LENGTH = 1K
+    RAM (rwx)                   : ORIGIN = 0x20000000, LENGTH = 20K
 }
 
 SECTIONS
@@ -39,10 +39,10 @@ SECTIONS
     _la_data = LOADADDR(.data);
 
     /* Section chứa dữ liệu của firmware flag */
-    .user_data :
+    .firmware_flag :
     {
         . = ALIGN(4);
-        KEEP(*(.user_data))
+        KEEP(*(.firmware_flag))
     } > FIRMWAREFLAG
 
     .data :

@@ -30,6 +30,8 @@
 ".\stm32_nolibrary\initsystemperipheral.o"
 ".\stm32_nolibrary\uart_data_manager.o"
 ".\stm32_nolibrary\bootloader.o"
+".\stm32_nolibrary\flashstm32.o"
+".\stm32_nolibrary\scb_base.o"
 --strict --scatter ".\STM32_NOLIBRARY\STM32_NOLIBRARY.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --list "..\Output\STM32_NOLIBRARY.map" -o .\STM32_NOLIBRARY\STM32_NOLIBRARY.axf

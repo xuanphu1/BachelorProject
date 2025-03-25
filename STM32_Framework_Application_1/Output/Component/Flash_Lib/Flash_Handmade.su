@@ -1,0 +1,7 @@
+Component/Flash_Lib/Flash_Handmade.c:5:15:Flash_AdjustForCLK	4	static
+Component/Flash_Lib/Flash_Handmade.c:39:6:Flash_Unlock	0	static
+Component/Flash_Lib/Flash_Handmade.c:47:6:Flash_Lock	0	static
+Component/Flash_Lib/Flash_Handmade.c:53:15:Flash_ErasePage	0	static
+Component/Flash_Lib/Flash_Handmade.c:112:6:Flash_Write	4	static
+Component/Flash_Lib/Flash_Handmade.c:149:15:Flash_EraseRange	16	static
+Component/Flash_Lib/Flash_Handmade.c:162:6:Flash_WriteHalfWord	4	static

@@ -45,6 +45,8 @@ typedef struct {
     uint8_t ArrayIndex;
     uint8_t ArrayBuff[25];
 
+    uint8_t SignalLockReciveData;
+
 } Data_Process_t;
 
 

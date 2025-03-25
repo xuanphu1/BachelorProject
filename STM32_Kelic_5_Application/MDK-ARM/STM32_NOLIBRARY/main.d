@@ -37,5 +37,7 @@
 .\stm32_nolibrary\main.o: ..\Component\UART_Handmade.h
 .\stm32_nolibrary\main.o: ..\Component\NVIC_Handmade.h
 .\stm32_nolibrary\main.o: ..\Component\Systick_Handmade.h
-.\stm32_nolibrary\main.o: ..\Component\Bootloader.h
 .\stm32_nolibrary\main.o: ..\Component\InitSystemPeripheral.h
+.\stm32_nolibrary\main.o: ..\Component\FlashSTM32.h
+.\stm32_nolibrary\main.o: C:\Keli_V5_STM32\ARM\ARMCC\Bin\..\include\string.h
+.\stm32_nolibrary\main.o: ..\Component\SCB_Base.h
