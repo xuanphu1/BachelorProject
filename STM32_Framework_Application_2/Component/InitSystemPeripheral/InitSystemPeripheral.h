@@ -10,10 +10,11 @@
 #include "Systick_Handmade.h"
 #include "Timer_Handmade.h"
 #include "UART_Handmade.h"
+#include "UART_Data_Manager.h"
 
 
 
-void InitSystemPeripheral(void);
+void InitSystemPeripheral(DataManager_t *_DataManager);
 
 
 

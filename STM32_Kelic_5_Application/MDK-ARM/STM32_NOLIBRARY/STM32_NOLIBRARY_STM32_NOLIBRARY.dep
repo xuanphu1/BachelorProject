@@ -1,7 +1,7 @@
 Dependencies for Project 'STM32_NOLIBRARY', Target 'STM32_NOLIBRARY': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::.\ARMCC
 F (startup_stm32f103xb.s)(0x67D65F01)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_STM32_NOLIBRARY-IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include--pd "__UVISION_VERSION SETA 531" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list ..\output\startup_stm32f103xb.lst --xref -o .\stm32_nolibrary\startup_stm32f103xb.o --depend .\stm32_nolibrary\startup_stm32f103xb.d)
-F (../Core/Src/main.c)(0x67E23FF3)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Component-I.\RTE\_STM32_NOLIBRARY-IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o .\stm32_nolibrary\main.o --omf_browse .\stm32_nolibrary\main.crf --depend .\stm32_nolibrary\main.d)
+F (../Core/Src/main.c)(0x67E2B46F)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Component-I.\RTE\_STM32_NOLIBRARY-IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o .\stm32_nolibrary\main.o --omf_browse .\stm32_nolibrary\main.crf --depend .\stm32_nolibrary\main.d)
 I (../Core/Inc/main.h)(0x67D4FD24)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66CFBAC3)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x67D65EFC)
@@ -28,7 +28,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x66CFBAC3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x66CFBAC3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x66CFBAC3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66CFBAC3)
-I (..\Component\UART_Data_Manager.h)(0x67E092E4)
+I (..\Component\UART_Data_Manager.h)(0x67E2AE59)
 I (..\Component\DMA_Handmade.h)(0x67E09400)
 I (..\Component\RCC_Handmade.h)(0x67DF4BAF)
 I (C:\Keli_V5_STM32\ARM\ARMCC\include\stdio.h)(0x5EC848EC)
@@ -39,7 +39,7 @@ I (..\Component\Timer_Handmade.h)(0x67D211C8)
 I (..\Component\UART_Handmade.h)(0x67D8F273)
 I (..\Component\NVIC_Handmade.h)(0x67D67E79)
 I (..\Component\Systick_Handmade.h)(0x67D67E8C)
-I (..\Component\InitSystemPeripheral.h)(0x67E095C5)
+I (..\Component\InitSystemPeripheral.h)(0x67E2AF69)
 I (..\Component\FlashSTM32.h)(0x66B189D2)
 I (C:\Keli_V5_STM32\ARM\ARMCC\include\string.h)(0x5EC848F4)
 I (..\Component\SCB_Base.h)(0x67E22DD4)
@@ -488,14 +488,14 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x66CFBAC3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x66CFBAC3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x66CFBAC3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x66CFBAC3)
-F (..\Component\ADC_Handmade.c)(0x67D5F6EF)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Component-I.\RTE\_STM32_NOLIBRARY-IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o .\stm32_nolibrary\adc_handmade.o --omf_browse .\stm32_nolibrary\adc_handmade.crf --depend .\stm32_nolibrary\adc_handmade.d)
+F (..\Component\ADC_Handmade.c)(0x67E2A07F)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Component-I.\RTE\_STM32_NOLIBRARY-IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o .\stm32_nolibrary\adc_handmade.o --omf_browse .\stm32_nolibrary\adc_handmade.crf --depend .\stm32_nolibrary\adc_handmade.d)
 I (..\Component\ADC_Handmade.h)(0x67D5F6D2)
 I (C:\Keli_V5_STM32\ARM\ARMCC\include\stdint.h)(0x5EC848EC)
 I (..\Component\RCC_Handmade.h)(0x67DF4BAF)
 I (C:\Keli_V5_STM32\ARM\ARMCC\include\stdio.h)(0x5EC848EC)
 I (..\Component\Flash_Handmade.h)(0x67E22BD2)
 I (..\Component\GPIO_Handmade.h)(0x67E09884)
-F (..\Component\DMA_Handmade.c)(0x67E09585)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Component-I.\RTE\_STM32_NOLIBRARY-IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o .\stm32_nolibrary\dma_handmade.o --omf_browse .\stm32_nolibrary\dma_handmade.crf --depend .\stm32_nolibrary\dma_handmade.d)
+F (..\Component\DMA_Handmade.c)(0x67E2AF00)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Component-I.\RTE\_STM32_NOLIBRARY-IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o .\stm32_nolibrary\dma_handmade.o --omf_browse .\stm32_nolibrary\dma_handmade.crf --depend .\stm32_nolibrary\dma_handmade.d)
 I (..\Component\DMA_Handmade.h)(0x67E09400)
 I (C:\Keli_V5_STM32\ARM\ARMCC\include\stdint.h)(0x5EC848EC)
 I (..\Component\RCC_Handmade.h)(0x67DF4BAF)
@@ -541,8 +541,8 @@ I (C:\Keli_V5_STM32\ARM\ARMCC\include\stdio.h)(0x5EC848EC)
 I (..\Component\Flash_Handmade.h)(0x67E22BD2)
 I (..\Component\GPIO_Handmade.h)(0x67E09884)
 I (..\Component\NVIC_Handmade.h)(0x67D67E79)
-F (..\Component\InitSystemPeripheral.c)(0x67E0969B)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Component-I.\RTE\_STM32_NOLIBRARY-IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o .\stm32_nolibrary\initsystemperipheral.o --omf_browse .\stm32_nolibrary\initsystemperipheral.crf --depend .\stm32_nolibrary\initsystemperipheral.d)
-I (..\Component\InitSystemPeripheral.h)(0x67E095C5)
+F (..\Component\InitSystemPeripheral.c)(0x67E2B46E)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Component-I.\RTE\_STM32_NOLIBRARY-IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o .\stm32_nolibrary\initsystemperipheral.o --omf_browse .\stm32_nolibrary\initsystemperipheral.crf --depend .\stm32_nolibrary\initsystemperipheral.d)
+I (..\Component\InitSystemPeripheral.h)(0x67E2AF69)
 I (C:\Keli_V5_STM32\ARM\ARMCC\include\stdio.h)(0x5EC848EC)
 I (..\Component\ADC_Handmade.h)(0x67D5F6D2)
 I (C:\Keli_V5_STM32\ARM\ARMCC\include\stdint.h)(0x5EC848EC)
@@ -554,8 +554,9 @@ I (..\Component\NVIC_Handmade.h)(0x67D67E79)
 I (..\Component\Systick_Handmade.h)(0x67D67E8C)
 I (..\Component\Timer_Handmade.h)(0x67D211C8)
 I (..\Component\UART_Handmade.h)(0x67D8F273)
-F (..\Component\UART_Data_Manager.c)(0x67E23148)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Component-I.\RTE\_STM32_NOLIBRARY-IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o .\stm32_nolibrary\uart_data_manager.o --omf_browse .\stm32_nolibrary\uart_data_manager.crf --depend .\stm32_nolibrary\uart_data_manager.d)
-I (..\Component\UART_Data_Manager.h)(0x67E092E4)
+I (..\Component\UART_Data_Manager.h)(0x67E2AE59)
+F (..\Component\UART_Data_Manager.c)(0x67E2A95A)(--c99 -c --cpu Cortex-M3 -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\Component-I.\RTE\_STM32_NOLIBRARY-IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include-IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o .\stm32_nolibrary\uart_data_manager.o --omf_browse .\stm32_nolibrary\uart_data_manager.crf --depend .\stm32_nolibrary\uart_data_manager.d)
+I (..\Component\UART_Data_Manager.h)(0x67E2AE59)
 I (..\Component\DMA_Handmade.h)(0x67E09400)
 I (C:\Keli_V5_STM32\ARM\ARMCC\include\stdint.h)(0x5EC848EC)
 I (..\Component\RCC_Handmade.h)(0x67DF4BAF)

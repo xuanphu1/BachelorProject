@@ -97,24 +97,14 @@ void ReciveUART(uint8_t Data){
 }
 
 
-void getDataSensor_ControlDevice(void){
-    // Dummy Data
-    DataManager->DataSensor[CONDUCTIVITY] = 100 ;
-    DataManager->DataSensor[PH] = 10 ;
-    DataManager->DataSensor[TDS] = 1000 ;
-    DataManager->DataSensor[TEMPERATURE] = 33 ;
-    DataManager->DataSensor[WATERLEVER] = 44 ;
-
-
-
-
+void ControlDevice(void){
     if (DataManager->SetAuto == TURN_OFF_AUTO){
         
     }
     for (Device_t device  = FAN; device <= FEEDER; device++) {
         uint8_t deviceState = (DataManager->UartBuff[device] & 0x01) ? 1 : 0;  
-        WritePin(Port_A, (Pin_gpio_t)(device+3), deviceState);
-        if (device == FEEDER) WritePin(Port_B, PIN_0,deviceState);
+        WritePin(Port_B, (Pin_gpio_t)(device+3), deviceState);
+        if (device == FEEDER) WritePin(Port_A, PIN_15,deviceState);
     }
     
     DataManager->StatusDeveice =    ((DataManager->UartBuff[FAN]        & 0x1) << FAN) 		| 
@@ -132,7 +122,7 @@ void InitDataManager(DataManager_t *DataManager_t){
     // Set up DMA that to Data from ADC is saved at Struct DataManager
 		
     AddressPeripheral(DMA_CHANNEL_1,(uint32_t)&(ADC1_HANDMADE->ADC_DR));
-    AddressPeripheral(DMA_CHANNEL_1,(uint32_t)DataManager->DataSensor);
+    AddressMemory(DMA_CHANNEL_1,(uint32_t)DataManager->DataSensor);
 
 }
 
@@ -166,12 +156,11 @@ void SignalModeNormal_LED(void){
 
 void UART_Controller(void){
 
-    getDataSensor_ControlDevice();
+    ControlDevice();
     InitDataToESP32();
     TransmitDataUART(UART_1,(uint8_t*)&DataManager->DataToESP32,strlen_custom(DataManager->DataToESP32));
-		SignalModeNormal_LED();
-		TogglePin(Port_C,PIN_13);
-		Delay_SysTick(2500);
+    SignalModeNormal_LED();
+    Delay_SysTick(2500);
 }
 
 

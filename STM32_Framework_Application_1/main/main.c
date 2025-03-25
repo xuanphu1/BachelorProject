@@ -1,14 +1,12 @@
 #include "main.h"
 
 void USART1_IRQHandler(void) {
-
   uint8_t data_rx = USART1_HANDMADE->UART_DR;
   ReciveUART(data_rx);
-		
 }
 int main(void)
 {
-  InitSystemPeripheral();
+  InitSystemPeripheral(&Data_Manager);
   InitDataManager(&Data_Manager);
 	
   while (1)

@@ -33,7 +33,7 @@ DMA_Error_t DMA_Init(DMA_Config_t *dmaConfig){
 
     
     // Cấu hình kênh DMA
-    DMA1_HANDMADE->CHANNEL[dmaConfig->Channel].DMA_CCR |= (dmaConfig->Priority << 12);         // Độ ưu tiên
+    DMA1_HANDMADE->CHANNEL[dmaConfig->Channel].DMA_CCR |= (dmaConfig->Priority << 12);         		// Độ ưu tiên
     DMA1_HANDMADE->CHANNEL[dmaConfig->Channel].DMA_CCR |= (dmaConfig->PeripheralIncrement << 6); // Tăng địa chỉ ngoại vi
     DMA1_HANDMADE->CHANNEL[dmaConfig->Channel].DMA_CCR |= (dmaConfig->MemoryIncrement << 7);     // Tăng địa chỉ bộ nhớ
     DMA1_HANDMADE->CHANNEL[dmaConfig->Channel].DMA_CCR |= (dmaConfig->PeripheralSize << 8);      // Kích thước ngoại vi

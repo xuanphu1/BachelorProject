@@ -11,3 +11,4 @@
 .\stm32_nolibrary\initsystemperipheral.o: ..\Component\Systick_Handmade.h
 .\stm32_nolibrary\initsystemperipheral.o: ..\Component\Timer_Handmade.h
 .\stm32_nolibrary\initsystemperipheral.o: ..\Component\UART_Handmade.h
+.\stm32_nolibrary\initsystemperipheral.o: ..\Component\UART_Data_Manager.h

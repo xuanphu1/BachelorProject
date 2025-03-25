@@ -71,12 +71,6 @@ typedef enum {
 typedef struct {
 	
 	uint16_t StatusDeveice;
-	// uint16_t Temperature;
-	// uint16_t TDS_Value;
-	// uint16_t Conductivity_Value;
-	// uint16_t PH_Value;
-	// uint16_t WaterLevel;
-
 	uint16_t DataSensor[5];
 	char DataToESP32[100];
 	

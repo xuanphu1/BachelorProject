@@ -35,9 +35,9 @@ void USART1_IRQHandler(void) {
 int main(void)
 {
 	HAL_Init();
-  InitSystemPeripheral();
+  InitSystemPeripheral(&Data_Manager);
   InitDataManager(&Data_Manager);
-	
+
   while (1)
   {
 
@@ -48,8 +48,6 @@ int main(void)
 		} else {
 			Flash_ErasePage(0x0800FC00);
       Flash_WriteHalfWord(0x0800FC00,(APP_1_ENABLE) | (RST_BOOTLOADER << 8));
-
-     
 			NVIC_SystemReset_handmade() ;
 		}
 		
