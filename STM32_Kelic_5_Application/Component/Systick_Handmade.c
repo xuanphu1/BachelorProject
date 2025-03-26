@@ -47,7 +47,10 @@ void Delay_SysTick(uint32_t value_ms) {
 
     // Đếm value_ms lần, mỗi lần là 1ms
     for (uint32_t i = 0; i < value_ms; i++) {
-        while (!(SYSTICK_HANDMADE->SYST_CSR & (1 << 16))); // Chờ COUNTFLAG = 1
+        while (!(SYSTICK_HANDMADE->SYST_CSR & (1 << 16))){
+            
+
+        } // Chờ COUNTFLAG = 1
         SYSTICK_HANDMADE->SYST_CVR = 0; // Reset counter
     }
 
