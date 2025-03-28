@@ -619,6 +619,31 @@
               <FileType>1</FileType>
               <FilePath>..\Component\SCB_Base.c</FilePath>
             </File>
+            <File>
+              <FileName>cortex_m3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\cortex_m3.c</FilePath>
+            </File>
+            <File>
+              <FileName>switch.asm</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\Component\switch.asm</FilePath>
+            </File>
+            <File>
+              <FileName>define.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Component\define.h</FilePath>
+            </File>
+            <File>
+              <FileName>common.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Component\common.h</FilePath>
+            </File>
+            <File>
+              <FileName>FreeRTOS_Handmade.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Component\FreeRTOS_Handmade.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

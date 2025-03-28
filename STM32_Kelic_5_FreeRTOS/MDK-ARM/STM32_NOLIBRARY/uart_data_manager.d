@@ -1,0 +1,13 @@
+.\stm32_nolibrary\uart_data_manager.o: ..\Component\UART_Data_Manager.c
+.\stm32_nolibrary\uart_data_manager.o: ..\Component\UART_Data_Manager.h
+.\stm32_nolibrary\uart_data_manager.o: ..\Component\DMA_Handmade.h
+.\stm32_nolibrary\uart_data_manager.o: C:\Keli_V5_STM32\ARM\ARMCC\Bin\..\include\stdint.h
+.\stm32_nolibrary\uart_data_manager.o: ..\Component\RCC_Handmade.h
+.\stm32_nolibrary\uart_data_manager.o: C:\Keli_V5_STM32\ARM\ARMCC\Bin\..\include\stdio.h
+.\stm32_nolibrary\uart_data_manager.o: ..\Component\Flash_Handmade.h
+.\stm32_nolibrary\uart_data_manager.o: ..\Component\ADC_Handmade.h
+.\stm32_nolibrary\uart_data_manager.o: ..\Component\GPIO_Handmade.h
+.\stm32_nolibrary\uart_data_manager.o: ..\Component\Timer_Handmade.h
+.\stm32_nolibrary\uart_data_manager.o: ..\Component\UART_Handmade.h
+.\stm32_nolibrary\uart_data_manager.o: ..\Component\NVIC_Handmade.h
+.\stm32_nolibrary\uart_data_manager.o: ..\Component\Systick_Handmade.h

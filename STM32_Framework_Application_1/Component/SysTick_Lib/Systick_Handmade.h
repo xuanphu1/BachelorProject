@@ -53,9 +53,12 @@ typedef struct
 }SysTick_Config_t;
 
 
+extern volatile uint32_t SysTick_ms;
+
 // Hàm khởi tạo SysTick (ví dụ)
 void SysTick_Init(SysTick_Config_t *systickConfig);
 void Delay_SysTick(uint32_t value_ms);
+void Systick_ms_inc(void);
 
 #endif // SYSTICK_HANDMADE_H
 

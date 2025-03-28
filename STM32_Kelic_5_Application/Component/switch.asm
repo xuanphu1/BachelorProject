@@ -1,6 +1,3 @@
-    SECTION rtos_function: CODE:NOROOT(1)
-    
-    EXTERN Task
-    
-
-    END
+	AREA rtos_function, CODE, READONLY
+	; Mã c?a b?n ? dây
+	END

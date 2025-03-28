@@ -1,0 +1,112 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 PRESERVE8
+    2 00000000                 AREA             rtos_function, CODE, READONLY, 
+ALIGN=3
+    3 00000000         
+    4 00000000         
+    5 00000000                 EXPORT           PendSV_Handler
+    6 00000000                 EXTERN           Task_GetCurrentCPU
+    7 00000000                 EXTERN           Task_GetNextCPU
+    8 00000000         ;SP here - R0 - R1 - R2 - R3 - R12 - RA - LR  - EPSR
+    9 00000000         PendSV_Handler
+   10 00000000         ; Save current CPU
+   11 00000000 F7FF FFFE       BL               Task_GetCurrentCPU
+   12 00000004 6204            STR              R4,  [R0,#4*8 ]
+   13 00000006 6245            STR              R5,  [R0,#4*9 ]
+   14 00000008 6286            STR              R6,  [R0,#4*10]
+   15 0000000A 62C7            STR              R7,  [R0,#4*11]
+   16 0000000C F8C0 8030       STR              R8,  [R0,#4*12]
+   17 00000010 F8C0 9034       STR              R9,  [R0,#4*13]
+   18 00000014 F8C0 A038       STR              R10, [R0,#4*14]
+   19 00000018 F8C0 B03C       STR              R11, [R0,#4*15]
+   20 0000001C F8C0 D040       STR              SP,  [R0,#4*16]
+   21 00000020         
+   22 00000020 F7FF FFFE       BL               Task_GetNextCPU
+   23 00000024 2800            CMP              R0,#0
+   24 00000026 D00D            BEQ              BREAK
+   25 00000028         
+   26 00000028         ;LOAD next CPU
+   27 00000028 6A04            LDR              R4,  [R0,#4*8 ]
+   28 0000002A 6A45            LDR              R5,  [R0,#4*9 ]
+   29 0000002C 6A86            LDR              R6,  [R0,#4*10]
+   30 0000002E 6AC7            LDR              R7,  [R0,#4*11]
+   31 00000030 F8D0 8030       LDR              R8,  [R0,#4*12]
+   32 00000034 F8D0 9034       LDR              R9,  [R0,#4*13]
+   33 00000038 F8D0 A038       LDR              R10, [R0,#4*14]
+   34 0000003C F8D0 B03C       LDR              R11, [R0,#4*15]
+   35 00000040 F8D0 D040       LDR              SP,  [R0,#4*16]
+   36 00000044         
+   37 00000044         BREAK
+   38 00000044 F06F 0006       LDR              R0,=0xfffffff9
+   39 00000048 4686            MOV              LR,R0
+   40 0000004A 4770            BX               LR
+   41 0000004C         
+   42 0000004C         ; 
+   43 0000004C                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\stm32_nolibrary\switch.d -o.\stm32_nolibrary\switch.o -I.\RTE\_S
+TM32_FreeRTOS -IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Co
+re\Include -IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\De
+vice\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 53
+1" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_MD SETA 1" --predefine="_R
+TE_ SETA 1" --list=..\output\switch.lst ..\Component\switch.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+BREAK 00000044
+
+Symbol: BREAK
+   Definitions
+      At line 37 in file ..\Component\switch.asm
+   Uses
+      At line 24 in file ..\Component\switch.asm
+Comment: BREAK used once
+PendSV_Handler 00000000
+
+Symbol: PendSV_Handler
+   Definitions
+      At line 9 in file ..\Component\switch.asm
+   Uses
+      At line 5 in file ..\Component\switch.asm
+Comment: PendSV_Handler used once
+rtos_function 00000000
+
+Symbol: rtos_function
+   Definitions
+      At line 2 in file ..\Component\switch.asm
+   Uses
+      None
+Comment: rtos_function unused
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+Task_GetCurrentCPU 00000000
+
+Symbol: Task_GetCurrentCPU
+   Definitions
+      At line 6 in file ..\Component\switch.asm
+   Uses
+      At line 11 in file ..\Component\switch.asm
+Comment: Task_GetCurrentCPU used once
+Task_GetNextCPU 00000000
+
+Symbol: Task_GetNextCPU
+   Definitions
+      At line 7 in file ..\Component\switch.asm
+   Uses
+      At line 22 in file ..\Component\switch.asm
+Comment: Task_GetNextCPU used once
+2 symbols
+339 symbols in table
