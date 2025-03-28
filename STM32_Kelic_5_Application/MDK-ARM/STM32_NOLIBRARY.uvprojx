@@ -630,16 +630,6 @@
               <FilePath>..\Component\switch.asm</FilePath>
             </File>
             <File>
-              <FileName>define.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Component\define.h</FilePath>
-            </File>
-            <File>
-              <FileName>common.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Component\common.h</FilePath>
-            </File>
-            <File>
               <FileName>FreeRTOS_Handmade.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Component\FreeRTOS_Handmade.c</FilePath>

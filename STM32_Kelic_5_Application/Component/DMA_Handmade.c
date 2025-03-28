@@ -78,12 +78,3 @@ DMA_Error_t DMA_Start(DMAChannel_t channel) {
     return DMA_OK;
 }
 
-
-DMA_Error_t AddressPeripheral(DMAChannel_t channel,uint32_t address_start){
-    DMA1_HANDMADE->CHANNEL[channel].DMA_CPAR = address_start;
-		return DMA_OK;
-}
-DMA_Error_t AddressMemory(DMAChannel_t channel,uint32_t address_start){
-    DMA1_HANDMADE->CHANNEL[channel].DMA_CMAR = address_start;
-		return DMA_OK;
-}

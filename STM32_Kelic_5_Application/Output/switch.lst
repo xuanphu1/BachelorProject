@@ -4,9 +4,50 @@
 ARM Macro Assembler    Page 1 
 
 
-    1 00000000                 AREA             rtos_function, CODE, READONLY
-    2 00000000         ; Mã c?a b?n ? dây
-    3 00000000                 END
+    1 00000000         ;    PRESERVE8
+    2 00000000         ; AREA rtos_function, CODE, READONLY, ALIGN=3
+    3 00000000         ; 
+    4 00000000         ; 
+    5 00000000         ;    EXPORT PendSV_Handler
+    6 00000000         ; EXTERN Task_GetCurrentCPU
+    7 00000000         ; EXTERN Task_GetNextCPU
+    8 00000000         ; ;SP here - R0 - R1 - R2 - R3 - R12 - RA - LR  - EPSR
+    9 00000000         ;PendSV_Handler
+   10 00000000         ; ; Save current CPU
+   11 00000000         ; BL Task_GetCurrentCPU
+   12 00000000         ; STR R4,  [R0,#4*8 ]
+   13 00000000         ; STR R5,  [R0,#4*9 ]
+   14 00000000         ; STR R6,  [R0,#4*10]
+   15 00000000         ; STR R7,  [R0,#4*11]
+   16 00000000         ; STR R8,  [R0,#4*12]
+   17 00000000         ; STR R9,  [R0,#4*13]
+   18 00000000         ; STR R10, [R0,#4*14]
+   19 00000000         ; STR R11, [R0,#4*15]
+   20 00000000         ; STR SP,  [R0,#4*16]
+   21 00000000         ; 
+   22 00000000         ; BL Task_GetNextCPU
+   23 00000000         ; CMP R0,#0
+   24 00000000         ; BEQ BREAK
+   25 00000000         ; 
+   26 00000000         ; ;LOAD next CPU
+   27 00000000         ; LDR R4,  [R0,#4*8 ]
+   28 00000000         ; LDR R5,  [R0,#4*9 ]
+   29 00000000         ; LDR R6,  [R0,#4*10]
+   30 00000000         ; LDR R7,  [R0,#4*11]
+   31 00000000         ; LDR R8,  [R0,#4*12]
+   32 00000000         ; LDR R9,  [R0,#4*13]
+   33 00000000         ; LDR R10, [R0,#4*14]
+   34 00000000         ; LDR R11, [R0,#4*15]
+   35 00000000         ; LDR SP,  [R0,#4*16]
+   36 00000000         
+   37 00000000         ;BREAK
+   38 00000000         ; LDR R0,=0xfffffff9
+   39 00000000         ; MOV LR,R0
+   40 00000000         ; BX LR 
+   41 00000000         ; 
+   42 00000000         ;; 
+   43 00000000         ;    END
+                       
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=.\stm32_nolibrary\switch.d -o.\stm32_nolibrary\switch.o -I.\RTE\_S
 TM32_NOLIBRARY -IC:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\C
@@ -14,19 +55,4 @@ ore\Include -IC:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\D
 evice\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 5
 31" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_MD SETA 1" --predefine="_
 RTE_ SETA 1" --list=..\output\switch.lst ..\Component\switch.asm
-
-
-
-ARM Macro Assembler    Page 1 Alphabetic symbol ordering
-Relocatable symbols
-
-rtos_function 00000000
-
-Symbol: rtos_function
-   Definitions
-      At line 1 in file ..\Component\switch.asm
-   Uses
-      None
-Comment: rtos_function unused
-1 symbol
-335 symbols in table
+334 symbols in table

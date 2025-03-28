@@ -13,9 +13,9 @@ Custom_USART_Config_t uartConfigDefault = {
 
 SysTick_Config_t SysTickConfigDefault = {
     .EnableCounter = SYST_CSR_COUNTFLAG_YES,
-    .Generate_interrupt = SYST_CSR_TICKINT_DISABLE,
+    .Generate_interrupt = SYST_CSR_TICKINT_ENABLE,
     .SysTick_Source = SYST_CSR_CLKSOURCE_EXTERNAL,
-    .ValueInitReload = 0 
+    .ValueInitReload = 9000 
 };
 
 ADC_Config_t ADC_Config_5_SENSOR = {

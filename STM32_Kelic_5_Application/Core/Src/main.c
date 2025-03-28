@@ -23,7 +23,6 @@ typedef enum {
   APP_2_ENABLE = 2
 }Select_App_t;
 
-#define FLAG_TYPE_RST           0x0800F800
 #define FIRMWARE_FLAG_ADDRESS   0x0800FC00
 
 void USART1_IRQHandler(void) {
@@ -32,6 +31,13 @@ void USART1_IRQHandler(void) {
   ReciveUART(data_rx);
 		
 }
+
+void SysTick_Handler(void)
+{
+	Systick_ms_inc();
+}
+
+
 int main(void)
 {
 	HAL_Init();
@@ -46,8 +52,8 @@ int main(void)
       UART_Controller();
 			
 		} else {
-			Flash_ErasePage(0x0800FC00);
-      Flash_WriteHalfWord(0x0800FC00,(APP_1_ENABLE) | (RST_BOOTLOADER << 8));
+			Flash_ErasePage(FIRMWARE_FLAG_ADDRESS);
+      Flash_WriteHalfWord(FIRMWARE_FLAG_ADDRESS,(APP_1_ENABLE) | (RST_BOOTLOADER << 8));
 			NVIC_SystemReset_handmade() ;
 		}
 		

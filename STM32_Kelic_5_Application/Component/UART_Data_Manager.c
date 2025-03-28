@@ -118,12 +118,6 @@ void ControlDevice(void){
 
 void InitDataManager(DataManager_t *DataManager_t){
     DataManager = DataManager_t;
-		
-    // Set up DMA that to Data from ADC is saved at Struct DataManager
-		
-    AddressPeripheral(DMA_CHANNEL_1,(uint32_t)&(ADC1_HANDMADE->ADC_DR));
-    AddressMemory(DMA_CHANNEL_1,(uint32_t)DataManager->DataSensor);
-
 }
 
 
