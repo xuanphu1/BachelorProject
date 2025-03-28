@@ -47,19 +47,34 @@ void SysTick_Handler() {
 	TriggerSV_Call_Interrupt();
 }
 
-void main_1(){
-	while(1){
-		TogglePin(Port_A,PIN_0);
-		Task_Delay(100);
-	}
 
+Queue_t* ledQueue;
+Mutex_t* gpioMutex;
+
+void main_1(void) { // Task g?i d? li?u
+    while (1) {
+        uint32_t data = 1; // B?t LED
+        Mutex_Lock(gpioMutex);
+        Queue_Send(ledQueue, data);
+        Mutex_Unlock(gpioMutex);
+        Task_Delay(200);
+    }
 }
 
-void main_2(){
-	while(1){
-		TogglePin(Port_A,PIN_1);
-		Task_Delay(300);
-	}
+void main_2(void) { // Task nh?n d? li?u
+    while (1) {
+        uint32_t data;
+        if (Mutex_Lock(gpioMutex)) {
+            if (Queue_Receive(ledQueue, &data)) {
+                if (data == 1) {
+                    TogglePin(Port_A, PIN_0);
+										TogglePin(Port_A, PIN_1);
+                }
+            }
+            Mutex_Unlock(gpioMutex);
+        }
+        Task_Delay(50);
+    }
 }
 
 void main_3(){
@@ -81,16 +96,21 @@ int main(void)
 	InitGPIO(&LEDHardware);
 	InitGPIO(&LED2);
 	InitGPIO(&LED3);
+	
+	ledQueue = Queue_Create(10); // Queue 10 ph?n t?
+  gpioMutex = Mutex_Create();
+	
 	Task_Begin();
 	Task_Create(main_1,2);
 	Task_Create(main_2,3);
 	Task_Create(main_3,4);
+	
+
 	
 	while (1) {
 		RTOS_Run();
 	}
   
 }
-
 
 

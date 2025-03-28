@@ -26,6 +26,11 @@ typedef struct
   unsigned int SP;
 } CPU_TypeDef;
 
+
+
+//void DisableAllInterrupt(void);
+
+//void EnableAllInterrupt(void);
 #endif
 
 

@@ -34,3 +34,4 @@
 .\stm32_nolibrary\main.o: ..\Component\FreeRTOS_Handmade.h
 .\stm32_nolibrary\main.o: ..\Component\cortex_m3.h
 .\stm32_nolibrary\main.o: ..\Component\SCB_Base.h
+.\stm32_nolibrary\main.o: C:\Keli_V5_STM32\ARM\ARMCC\Bin\..\include\stdlib.h
