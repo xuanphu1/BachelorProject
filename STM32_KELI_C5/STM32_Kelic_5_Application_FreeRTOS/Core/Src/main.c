@@ -59,7 +59,7 @@ void ChangeMode_Task(){
 		if (Data_Manager.modeActive == OTA_MODE)
 		{
 			Flash_ErasePage(FIRMWARE_FLAG_ADDRESS);
-			Flash_WriteHalfWord(FIRMWARE_FLAG_ADDRESS,(APP_1_ENABLE) | (RST_BOOTLOADER << 8));
+			Flash_WriteHalfWord(FIRMWARE_FLAG_ADDRESS,(APP_2_ENABLE) | (RST_BOOTLOADER << 8));
 			NVIC_SystemReset_handmade() ;
 		}
 		Task_Delay(5);

@@ -9,7 +9,7 @@ Custom_USART_Config_t uartConfigDefault = {
     .usartEnable = Custom_UE_ENABLE,
     .wordLength = Custom_M_8BIT,
     .stopBits = Custom_STOP_1,
-    .baudUART = Custom_Baud_9600,
+    .baudUART = Custom_Baud_115200,
 };
 
 SysTick_Config_t SysTickConfigDefault = {
@@ -37,7 +37,6 @@ void InitBootLoader(Data_Process_t *DataOTA){
 		UARTInit(&uartConfigDefault);
 		EnableInterrupt_RX_UARTx(UART_1);
 		InitGPIO(&config_gpio);
-		WritePin(Port_C,PIN_13,1);
 }
 
 

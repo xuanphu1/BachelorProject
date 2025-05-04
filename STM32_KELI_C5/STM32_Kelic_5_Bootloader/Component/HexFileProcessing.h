@@ -20,6 +20,7 @@ typedef enum {
 
 
 #define END_LINE_DATA 0xEE
+#define KEY_OTA 0xABABABAB
 
 typedef enum {
 

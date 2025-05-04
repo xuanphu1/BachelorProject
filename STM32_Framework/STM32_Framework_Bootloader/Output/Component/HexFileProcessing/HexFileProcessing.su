@@ -1,4 +1,5 @@
-Component/HexFileProcessing/HexFileProcessing.c:4:9:CalculateChecksum	8	static
-Component/HexFileProcessing/HexFileProcessing.c:13:6:parseHex	8	static
-Component/HexFileProcessing/HexFileProcessing.c:44:6:LoadDataToFlash	24	static
-Component/HexFileProcessing/HexFileProcessing.c:73:6:receiveDataToOTA	0	static
+Component/HexFileProcessing/HexFileProcessing.c:10:6:memset_hm	0	static
+Component/HexFileProcessing/HexFileProcessing.c:16:9:CalculateChecksum	8	static
+Component/HexFileProcessing/HexFileProcessing.c:25:6:parseHex	8	static
+Component/HexFileProcessing/HexFileProcessing.c:56:6:LoadDataToFlash	24	static
+Component/HexFileProcessing/HexFileProcessing.c:85:6:receiveDataToOTA	12	static

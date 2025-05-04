@@ -1,5 +1,17 @@
 #include "HexFileProcessing.h"
 
+
+
+uint8_t flagStartOTA = 0;
+uint32_t KeyOTA;
+uint8_t indexBitKey = 0;
+
+
+void memset_hm(uint8_t *ptr, uint8_t value, size_t num) {
+    for (size_t i = 0; i < num; i++) {
+        ptr[i] = value;
+    }
+}
 // Hàm tính toán tổng kiểm tra (checksum) của một bản ghi
 uint8_t CalculateChecksum(uint8_t* record, uint8_t length) {
     uint8_t sum = 0;
@@ -70,15 +82,45 @@ void LoadDataToFlash(Data_Process_t *path_Hex){
         
     }
 }
-void receiveDataToOTA(Data_Process_t *DataToOTA){
-    DataToOTA->byteCount = DataToOTA->ArrayBuff[0];
-	if( DataToOTA->ArrayIndex >= DataToOTA->byteCount + 5){
-		DataToOTA->Flag_Data_Full_Line = 1;
-		DataToOTA->ArrayIndex = 0;
-	}
-	else {
-		DataToOTA->ArrayBuff[DataToOTA->ArrayIndex++] = DataToOTA->eachByteData;
-	}
+void receiveDataToOTA(Data_Process_t *DataToOTA)
+{
+
+    
+    if (flagStartOTA == 0)
+    {
+        if (DataToOTA->eachByteData == 0xAB)
+        {
+            KeyOTA |= DataToOTA->eachByteData << indexBitKey;
+            indexBitKey += 8;
+        }
+        else
+        {
+            KeyOTA = 0;
+            indexBitKey = 0;
+            memset_hm(DataToOTA->ArrayBuff, 0, sizeof(DataToOTA->ArrayBuff));
+            DataToOTA->ArrayIndex = 0;
+        }
+        if (KeyOTA == KEY_OTA)
+        {
+            flagStartOTA = 1;
+            memset_hm(DataToOTA->ArrayBuff, 0, sizeof(DataToOTA->ArrayBuff));
+            DataToOTA->ArrayIndex = 0;
+            WritePin(Port_C,PIN_13,1);
+        }
+    }
+    else
+    {
+        DataToOTA->byteCount = DataToOTA->ArrayBuff[0];
+        if (DataToOTA->ArrayIndex >= DataToOTA->byteCount + 5)
+        {
+            DataToOTA->Flag_Data_Full_Line = 1;
+            DataToOTA->ArrayIndex = 0;
+        }
+        else
+        {
+            DataToOTA->ArrayBuff[DataToOTA->ArrayIndex++] = DataToOTA->eachByteData;
+        }
+    }
 }
 
 

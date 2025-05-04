@@ -6,7 +6,7 @@ Custom_USART_Config_t uartConfigDefault = {
     .usartEnable = Custom_UE_ENABLE,
     .wordLength = Custom_M_8BIT,
     .stopBits = Custom_STOP_1,
-    .baudUART = Custom_Baud_115200,
+    .baudUART = Custom_Baud_9600,
 };
 
 SysTick_Config_t SysTickConfigDefault = {

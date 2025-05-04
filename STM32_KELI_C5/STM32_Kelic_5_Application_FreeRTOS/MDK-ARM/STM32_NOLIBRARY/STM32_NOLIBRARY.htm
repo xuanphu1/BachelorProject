@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\STM32_NOLIBRARY\STM32_NOLIBRARY.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\STM32_NOLIBRARY\STM32_NOLIBRARY.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Apr 06 15:18:00 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon May 05 07:57:38 2025
 <BR><P>
 <H3>Maximum Stack Usage =         76 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -443,10 +443,10 @@ Global Symbols
 <P><STRONG><a name="[4a]"></a>_init_alloc</STRONG> (Thumb, 94 bytes, Stack size 24 bytes, init_alloc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = _init_alloc &rArr; __rt_SIGRTMEM &rArr; __rt_SIGRTMEM_inner &rArr; __default_signal_display &rArr; _ttywrch
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_SIGRTMEM
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__Heap_ProvideMemory
+<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__Heap_ProvideMemory
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__Heap_Initialize
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_heap_descriptor
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_SIGRTMEM
 </UL>
 <BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_heap_2
 </UL>
@@ -524,8 +524,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[55]"></a>_sys_exit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, sys_exit.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__sig_exit
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
+<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__sig_exit
 </UL>
 
 <P><STRONG><a name="[63]"></a>__default_signal_display</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, defsig_general.o(.text))
@@ -584,8 +584,8 @@ Global Symbols
 <P><STRONG><a name="[6e]"></a>ControlDevice</STRONG> (Thumb, 186 bytes, Stack size 16 bytes, uart_data_manager.o(i.ControlDevice))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = ControlDevice &rArr; WritePin
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSignalMode
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WritePin
+<BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WritePin
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSignalMode
 </UL>
 <BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ControlDeviceHandle_Task
 </UL>
@@ -857,9 +857,9 @@ Global Symbols
 <P><STRONG><a name="[90]"></a>SendData</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, uart_data_manager.o(i.SendData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = SendData &rArr; InitDataToESP32
 </UL>
-<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SignalModeNormal_LED
+<BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TransmitDataUART
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SignalModeNormal_LED
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitDataToESP32
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TransmitDataUART
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SendDataToESP32_Task
 </UL>
@@ -935,8 +935,8 @@ Global Symbols
 <P><STRONG><a name="[40]"></a>Task_End</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, freertos_handmade.o(i.Task_End))
 <BR><BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TriggerSV_Call_Interrupt
 </UL>
-<BR>[Address Reference Count : 2]<UL><LI> freertos_handmade.o(i.Task_Create)
-<LI> freertos_handmade.o(i.Task_Begin)
+<BR>[Address Reference Count : 2]<UL><LI> freertos_handmade.o(i.Task_Begin)
+<LI> freertos_handmade.o(i.Task_Create)
 </UL>
 <P><STRONG><a name="[a3]"></a>Task_GetCurrentCPU</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, freertos_handmade.o(i.Task_GetCurrentCPU))
 <BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PendSV_Handler

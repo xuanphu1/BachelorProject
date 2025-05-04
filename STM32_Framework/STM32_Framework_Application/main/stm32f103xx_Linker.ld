@@ -8,7 +8,7 @@ _stack_size = 2048;  /* 2KB Stack */
 /* Định nghĩa bộ nhớ */
 MEMORY
 {
-    FLASH (rx)  : ORIGIN = 0x08000000, LENGTH = 27K
+    FLASH (rx)  : ORIGIN = 0x08007000, LENGTH = 27K
     RAM   (rwx) : ORIGIN = 0x20000000, LENGTH = 20K
 }
 

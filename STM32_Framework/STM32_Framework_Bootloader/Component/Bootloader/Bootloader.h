@@ -17,7 +17,7 @@ typedef enum {
 
 #define __set_MSP(addr)  __asm__ volatile ("MSR msp, %0" :: "r" (addr) : )
 
-#define PAGE_MEMORY_EACH_APP 27
+#define PAGE_MEMORY_EACH_APP 10
 
 // Capcity of Bootloader is 8KB
 #define APP_1_START_ADDRESS 0x08002000 // Page 8 -> Page 36

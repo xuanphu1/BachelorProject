@@ -6,6 +6,10 @@
 #include "Systick_Handmade.h"
 
 
+
+#define KEY_OTA 0xABABABAB
+
+
 typedef enum {
     NACK = 0,
     ACK

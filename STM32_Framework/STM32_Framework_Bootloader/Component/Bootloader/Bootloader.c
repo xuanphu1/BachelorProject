@@ -7,7 +7,7 @@ Custom_USART_Config_t uartConfigDefault = {
     .usartEnable = Custom_UE_ENABLE,
     .wordLength = Custom_M_8BIT,
     .stopBits = Custom_STOP_1,
-    .baudUART = Custom_Baud_115200,
+    .baudUART = Custom_Baud_9600,
 };
 
 SysTick_Config_t SysTickConfigDefault = {
@@ -96,7 +96,6 @@ void BootLoader(void){
 
             if (dataToOTA->SignalLockReciveData == 1){
                 Flash_EraseRange(APP_1_START_ADDRESS,PAGE_MEMORY_EACH_APP);
-
                 Flash_ErasePage(FIRMWARE_FLAG_ADDRESS);
                 Flash_WriteHalfWord(FIRMWARE_FLAG_ADDRESS,(APP_2_ENABLE) | (RST_HARDWARE << 8));
             }

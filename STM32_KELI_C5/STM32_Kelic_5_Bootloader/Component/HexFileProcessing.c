@@ -1,5 +1,9 @@
 #include "HexFileProcessing.h"
 
+
+uint8_t flagStartOTA = 0;
+uint32_t KeyOTA;
+uint8_t indexBitKey = 0;
 // Hàm tính toán tổng kiểm tra (checksum) của một bản ghi
 uint8_t CalculateChecksum(uint8_t* record, uint8_t length) {
     uint8_t sum = 0;
@@ -9,8 +13,19 @@ uint8_t CalculateChecksum(uint8_t* record, uint8_t length) {
     return (uint8_t)(~sum + 1);  // Trả về giá trị bổ sung (two's complement)
 }
 
+
+void memset_hm(uint8_t *ptr, uint8_t value, size_t num) {
+    for (size_t i = 0; i < num; i++) {
+        ptr[i] = value;
+    }
+}
+
 uint32_t *line = (uint32_t*)0x08009000;
 uint32_t checksum ;
+
+
+
+
 void parseHex(Data_Process_t *path_Hex, uint8_t *ArrayData){
     
     path_Hex->recordType = (RecordType_t)ArrayData[3];
@@ -38,16 +53,8 @@ void parseHex(Data_Process_t *path_Hex, uint8_t *ArrayData){
         /* code */
         break;
     } 
-	
     path_Hex->checkSum = path_Hex->ArrayBuff[path_Hex->byteCount + 4];
 		checksum = CalculateChecksum(path_Hex->ArrayBuff,path_Hex->byteCount + 4);
-		if (checksum != path_Hex->checkSum) {
-			TogglePin(Port_C,PIN_13);
-			*line = path_Hex->addressOffset;
-			 line++;
-			//*(uin32_t)line ++;
-			//TransmitDataUART(UART_1,&line,1);
-		}
 		
 }
 uint32_t DataMask;
@@ -75,21 +82,43 @@ void LoadDataToFlash(Data_Process_t *path_Hex){
             Flash_Write(Address + dataIdx, DataMask);
             if (dataIdx == 0) Flash_Write(Address + dataIdx, DataMask);
             // Cập nhật địa chỉ và chỉ số dữ liệu
-            //Address += 4;
             dataIdx += 4;  // Tiến tới 4 byte tiếp theo
         }
         
     }
 }
+
+
+
 void receiveDataToOTA(Data_Process_t *DataToOTA){
-    DataToOTA->byteCount = DataToOTA->ArrayBuff[0];
-	if( DataToOTA->ArrayIndex >= DataToOTA->byteCount + 5){
-		DataToOTA->Flag_Data_Full_Line = 1;
-		DataToOTA->ArrayIndex = 0;
-	}
-	else {
-		DataToOTA->ArrayBuff[DataToOTA->ArrayIndex++] = DataToOTA->eachByteData;
-	}
+	
+	if (flagStartOTA == 0){
+		if(DataToOTA->eachByteData == 0xAB){
+		KeyOTA |= DataToOTA->eachByteData << indexBitKey;
+		indexBitKey += 8;
+		}else {
+			KeyOTA = 0;
+			indexBitKey = 0;
+			memset_hm(DataToOTA->ArrayBuff,0,sizeof(DataToOTA->ArrayBuff));
+			DataToOTA->ArrayIndex = 0;
+		}
+		if(KeyOTA == KEY_OTA) {
+			flagStartOTA = 1;
+			memset_hm(DataToOTA->ArrayBuff,0,sizeof(DataToOTA->ArrayBuff));
+			DataToOTA->ArrayIndex = 0;
+			WritePin(Port_C,PIN_13,1);
+		}
+	} else {
+			DataToOTA->byteCount = DataToOTA->ArrayBuff[0];
+		if( DataToOTA->ArrayIndex >= DataToOTA->byteCount + 5){
+			DataToOTA->Flag_Data_Full_Line = 1;
+			DataToOTA->ArrayIndex = 0;
+			}
+
+			else {
+				DataToOTA->ArrayBuff[DataToOTA->ArrayIndex++] = DataToOTA->eachByteData;
+			}
+		}
 }
 
 
