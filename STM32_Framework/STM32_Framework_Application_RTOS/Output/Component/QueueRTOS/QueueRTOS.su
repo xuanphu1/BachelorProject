@@ -1,0 +1,7 @@
+Component/QueueRTOS/QueueRTOS.c:5:10:Queue_Create	16	static
+Component/QueueRTOS/QueueRTOS.c:22:10:Queue_Send	8	static
+Component/QueueRTOS/QueueRTOS.c:35:10:Queue_Send_FromISR	8	static
+Component/QueueRTOS/QueueRTOS.c:46:10:Queue_Receive_FromISR	4	static
+Component/QueueRTOS/QueueRTOS.c:60:10:Queue_Receive	4	static
+Component/QueueRTOS/QueueRTOS.c:72:9:isQueueEmpty	0	static
+Component/QueueRTOS/QueueRTOS.c:77:9:isQueueFull	0	static

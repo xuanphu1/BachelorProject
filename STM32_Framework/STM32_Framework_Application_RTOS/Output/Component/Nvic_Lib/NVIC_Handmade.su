@@ -1,0 +1,5 @@
+Component/Nvic_Lib/NVIC_Handmade.c:4:6:Enable_Intterupt_NVIC	0	static
+Component/Nvic_Lib/NVIC_Handmade.c:8:6:Disable_Intterupt_NVIC	0	static
+Component/Nvic_Lib/NVIC_Handmade.c:12:6:setPriorityInterrupt	0	static
+Component/Nvic_Lib/NVIC_Handmade.c:20:6:DisableAllInterrupt	0	static
+Component/Nvic_Lib/NVIC_Handmade.c:25:6:EnableAllInterrupt	0	static

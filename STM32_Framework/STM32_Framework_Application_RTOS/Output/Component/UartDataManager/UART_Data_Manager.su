@@ -1,0 +1,6 @@
+Component/UartDataManager/UART_Data_Manager.c:46:6:getSignalMode	0	static
+Component/UartDataManager/UART_Data_Manager.c:54:6:InitDataToESP32	80	static
+Component/UartDataManager/UART_Data_Manager.c:92:6:ControlDevice	16	static
+Component/UartDataManager/UART_Data_Manager.c:127:6:InitDataManager	0	static
+Component/UartDataManager/UART_Data_Manager.c:132:6:SignalModeNormal_LED	8	static
+Component/UartDataManager/UART_Data_Manager.c:159:6:SendData	8	static

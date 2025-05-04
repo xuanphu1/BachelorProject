@@ -1,0 +1,4 @@
+Component/HexFileProcessing/HexFileProcessing.c:4:9:CalculateChecksum	8	static
+Component/HexFileProcessing/HexFileProcessing.c:13:6:parseHex	8	static
+Component/HexFileProcessing/HexFileProcessing.c:44:6:LoadDataToFlash	24	static
+Component/HexFileProcessing/HexFileProcessing.c:73:6:receiveDataToOTA	0	static

@@ -1,0 +1,15 @@
+Removed Pin From Net: NetName=+3V3 Pin=L2-1
+Removed Pin From Net: NetName=+3V3_A Pin=L2-2
+Change Component Footprint: Designator=L2 Old Footprint=Cuon Cam 7x7x5 New Footprint=Inductor 0805
+Change Component Comment : Designator=L2 Old Comment=10uH SMD New Comment=Cuon cam 0805 10uH
+Change component parameters: Designator = "L2" ("L2"); Footprint = "Cuon Cam 7x7x5"; UniqueID = "\FIIMJQPD" ("\FIIMJQPD")
+Change component parameters (AddParameter): Name = "Availability"; Value = "Not in stock"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Check_prices"; Value = "https://www.snapeda.com/parts/CPI0805G1R5R-10/Laird/view-part/5881135/?ref=eda"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MF"; Value = "Laird"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "MP"; Value = "CPI0805G1R5R-10"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "0805 Laird"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/CPI0805G1R5R-10/Laird/view-part/5881135/?ref=snap"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+3V3_A Pin=L2-1
+Added Pin To Net: NetName=+3V3 Pin=L2-2

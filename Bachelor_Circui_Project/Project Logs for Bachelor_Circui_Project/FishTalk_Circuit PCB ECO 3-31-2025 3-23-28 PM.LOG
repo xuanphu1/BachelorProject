@@ -1,0 +1,8 @@
+Change Component Footprint: Designator=C9 Old Footprint=tu 0805 New Footprint=tu 0603
+Change component parameters: Designator = "C9" ("C9"); Footprint = "tu 0805"; UniqueID = "\HIHBTRYN" ("\HIHBTRYN")
+Change component parameters (AddParameter): Name = "Chung_Loai"; Value = "Dán"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ma_Hang"; Value = "MH004848"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "So_Chan"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ten_Linh_Kien"; Value = "T? 0603-10uF 20% 16V"; VariantName = "[No Variations]"

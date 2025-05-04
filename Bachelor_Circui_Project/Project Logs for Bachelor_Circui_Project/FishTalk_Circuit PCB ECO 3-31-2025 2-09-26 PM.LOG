@@ -1,0 +1,9 @@
+Change Component Footprint: Designator=C1 Old Footprint=tu tantalum smd6032 New Footprint=tu 0805
+Change Component Comment : Designator=C1 Old Comment=4.7uF New Comment=475
+Change component parameters: Designator = "C1" ("C1"); Footprint = "tu tantalum smd6032"; UniqueID = "\RDFIIABW" ("\RDFIIABW")
+Change component parameters (AddParameter): Name = "Chung_Loai"; Value = "Dán"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ma_Hang"; Value = "MH004276"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "So_Chan"; Value = "2"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ten_Linh_Kien"; Value = "T? 0805 475-4.7uF 20% 25V"; VariantName = "[No Variations]"

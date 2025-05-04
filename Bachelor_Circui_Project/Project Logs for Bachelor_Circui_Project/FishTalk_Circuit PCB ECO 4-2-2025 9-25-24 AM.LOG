@@ -1,0 +1,7 @@
+Change Component Designator: OldDesignator=H1 NewDesignator=TDS
+Change Component Designator: OldDesignator=H2 NewDesignator=TEMP
+Change Component Designator: OldDesignator=H4 NewDesignator=PH
+Change Component Designator: OldDesignator=H5 NewDesignator=WATER
+Change Component Designator: OldDesignator=H6 NewDesignator=COND
+Change Component Designator: OldDesignator=H7 NewDesignator=SERVO
+Change Component Designator: OldDesignator=H10 NewDesignator=BH17

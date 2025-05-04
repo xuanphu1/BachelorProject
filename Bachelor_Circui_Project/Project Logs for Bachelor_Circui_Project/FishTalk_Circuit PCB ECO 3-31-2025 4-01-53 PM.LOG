@@ -1,0 +1,18 @@
+Removed Pin From Net: NetName=GND Pin=C20-2
+Added Pin To Net: NetName=GND Pin=BT1-2
+Added Pin To Net: NetName=GND Pin=C20-1
+Added Pin To Net: NetName=GND Pin=U9-5
+Added Pin To Net: NetName=GND Pin=U9-6
+Added Pin To Net: NetName=GND Pin=U9-7
+Added Pin To Net: NetName=GND Pin=U9-8
+Added Pin To Net: NetName=GND Pin=U9-9
+Added Pin To Net: NetName=GND Pin=U9-10
+Added Pin To Net: NetName=GND Pin=U9-11
+Added Pin To Net: NetName=GND Pin=U9-12
+Added Pin To Net: NetName=GND Pin=U9-13
+Added Pin To Net: NetName=NetBT1_1 Pin=BT1-1
+Added Pin To Net: NetName=NetBT1_1 Pin=C20-1
+Added Net: Name=NetBT1_1
+Added Member To Class: ClassName=FishTalk_Schematic_1 Member=Component VIT? 1
+Added Member To Class: ClassName=FishTalk_Schematic_1 Member=Component VIT? 1
+Added Member To Class: ClassName=FishTalk_Schematic_1 Member=Component VIT? 1

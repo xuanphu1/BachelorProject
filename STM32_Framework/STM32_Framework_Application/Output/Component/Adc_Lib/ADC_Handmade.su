@@ -1,0 +1,4 @@
+Component/Adc_Lib/ADC_Handmade.c:8:13:ADC_EnableClock	24	static
+Component/Adc_Lib/ADC_Handmade.c:27:13:ADC_Init	32	static
+Component/Adc_Lib/ADC_Handmade.c:138:13:ADC_ReadMultiple	0	static
+Component/Adc_Lib/ADC_Handmade.c:169:13:ADC_DMA_Start	0	static

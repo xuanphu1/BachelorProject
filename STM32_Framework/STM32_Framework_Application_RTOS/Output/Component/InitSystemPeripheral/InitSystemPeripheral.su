@@ -1,0 +1,2 @@
+Component/InitSystemPeripheral/InitSystemPeripheral.c:76:6:InitGPIO_Control_Device	32	static
+Component/InitSystemPeripheral/InitSystemPeripheral.c:97:6:InitSystem_Peripheral	32	static

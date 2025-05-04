@@ -1,0 +1,16 @@
+Added Component: Designator=H?(XH2.54M-4)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "C?m"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ghi_Chu"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH001285"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten_Linh_Kien"; Value = "Header 4P XH2.54-4P Ð?c Th?ng"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+5 Pin=H?-1
+Added Pin To Net: NetName=GND Pin=H?-4
+Added Pin To Net: NetName=SCL_BH1750 Pin=H?-3
+Added Pin To Net: NetName=SCL_BH1750 Pin=U1-21
+Added Net: Name=SCL_BH1750
+Added Pin To Net: NetName=SDA_BH1750 Pin=H?-2
+Added Pin To Net: NetName=SDA_BH1750 Pin=U1-22
+Added Net: Name=SDA_BH1750
+Added Member To Class: ClassName=FishTalk_Schematic_1 Member=Component H? BH1750

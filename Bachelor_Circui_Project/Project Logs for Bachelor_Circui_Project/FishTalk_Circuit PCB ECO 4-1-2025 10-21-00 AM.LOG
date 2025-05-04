@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=SDA_BH1750 Pin=BH1750-2
+Removed Pin From Net: NetName=SCL_BH1750 Pin=BH1750-3
+Change Component Designator: OldDesignator=BH1750 NewDesignator=H10
+Change Component Designator: OldDesignator=COND NewDesignator=H6
+Change Component Designator: OldDesignator=PH NewDesignator=H4
+Change Component Designator: OldDesignator=SERVO NewDesignator=H7
+Change Component Designator: OldDesignator=TDS NewDesignator=H1
+Change Component Designator: OldDesignator=TEMP NewDesignator=H2
+Change Component Designator: OldDesignator=WATER NewDesignator=H5
+Added Pin To Net: NetName=SCL_BH1750 Pin=H10-2
+Added Pin To Net: NetName=SDA_BH1750 Pin=H10-3
+Added Member To Class: ClassName=FishTalk_Schematic_1 Member=Component H7 Servo

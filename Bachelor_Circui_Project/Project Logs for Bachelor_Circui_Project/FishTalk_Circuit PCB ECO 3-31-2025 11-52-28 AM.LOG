@@ -1,0 +1,33 @@
+Removed Pin From Net: NetName=GND Pin=BT1-2
+Removed Pin From Net: NetName=+5 Pin=C19-1
+Removed Pin From Net: NetName=GND Pin=U9-5
+Removed Pin From Net: NetName=GND Pin=U9-6
+Removed Pin From Net: NetName=GND Pin=U9-7
+Removed Pin From Net: NetName=GND Pin=U9-8
+Removed Pin From Net: NetName=GND Pin=U9-9
+Removed Pin From Net: NetName=GND Pin=U9-10
+Removed Pin From Net: NetName=GND Pin=U9-11
+Removed Pin From Net: NetName=GND Pin=U9-12
+Removed Pin From Net: NetName=GND Pin=U9-13
+Added Component: Designator=C20(tu 0805)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "Dán"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH004552"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "So_Chan"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten_Linh_Kien"; Value = "T? 0805 105-1uF 10% 50V"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+3V3 Pin=C19-1
+Added Pin To Net: NetName=GND Pin=C20-2
+Added Pin To Net: NetName=NetBT1_2 Pin=BT1-2
+Added Pin To Net: NetName=NetBT1_2 Pin=C20-1
+Added Pin To Net: NetName=NetBT1_2 Pin=U9-5
+Added Pin To Net: NetName=NetBT1_2 Pin=U9-6
+Added Pin To Net: NetName=NetBT1_2 Pin=U9-7
+Added Pin To Net: NetName=NetBT1_2 Pin=U9-8
+Added Pin To Net: NetName=NetBT1_2 Pin=U9-9
+Added Pin To Net: NetName=NetBT1_2 Pin=U9-10
+Added Pin To Net: NetName=NetBT1_2 Pin=U9-11
+Added Pin To Net: NetName=NetBT1_2 Pin=U9-12
+Added Pin To Net: NetName=NetBT1_2 Pin=U9-13
+Added Net: Name=NetBT1_2
+Added Member To Class: ClassName=FishTalk_Schematic_1 Member=Component C20 105

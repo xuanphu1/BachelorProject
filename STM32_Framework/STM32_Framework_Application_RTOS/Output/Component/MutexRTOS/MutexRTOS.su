@@ -1,0 +1,3 @@
+Component/MutexRTOS/MutexRTOS.c:5:10:Mutex_Create	8	static
+Component/MutexRTOS/MutexRTOS.c:14:10:Mutex_Lock	16	static
+Component/MutexRTOS/MutexRTOS.c:29:10:Mutex_Unlock	0	static

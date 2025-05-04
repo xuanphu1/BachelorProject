@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=+3V3 Pin=C19-1
+Removed Pin From Net: NetName=GND Pin=C19-2
+Removed Member From Class: ClassName=FishTalk_Schematic_1 Member=C19

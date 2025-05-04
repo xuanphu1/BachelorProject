@@ -1,0 +1,3 @@
+Component/SCB_Base/SCB_Base.c:6:6:NVIC_SystemReset_handmade	0	static
+Component/SCB_Base/SCB_Base.c:14:6:NVIC_SetVectorTable	0	static
+Component/SCB_Base/SCB_Base.c:18:6:TriggerSV_Call_Interrupt	0	static

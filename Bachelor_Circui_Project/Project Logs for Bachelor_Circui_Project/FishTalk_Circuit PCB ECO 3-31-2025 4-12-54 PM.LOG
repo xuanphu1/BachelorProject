@@ -1,0 +1,18 @@
+Removed Member From Class: ClassName=FishTalk_Schematic_1 Member=D6
+Change Component Footprint: Designator=BT1 Old Footprint=DE PINCR1220 New Footprint=DE PIN CR1220
+Change Component Comment : Designator=BT1 Old Comment=MH004292 New Comment=CR1220 SMD
+Change Component Designator: OldDesignator=VIT? NewDesignator=VIT1
+Change Component Designator: OldDesignator=VIT? NewDesignator=VIT2
+Change Component Designator: OldDesignator=VIT? NewDesignator=VIT3
+Change Component Designator: OldDesignator=VIT? NewDesignator=VIT4
+Change component parameters: Designator = "BT1" ("BT1"); Footprint = "DE PINCR1220"; UniqueID = "\CYCTXADT" ("\CYCTXADT")
+Change component parameters (AddParameter): Name = "Ma_Hang"; Value = "MH000833"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Ten"; Value = "Ð? PIN CR1220 SMD"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=C20-2
+Added Pin To Net: NetName=NetBT1_1 Pin=BT1-1
+Added Pin To Net: NetName=NetBT1_1 Pin=C20-1
+Added Pin To Net: NetName=NetBT1_1 Pin=U9-14
+Added Net: Name=NetBT1_1
+Added Member To Class: ClassName=FishTalk_Schematic_1 Member=Component VIT1 1
+Added Member To Class: ClassName=FishTalk_Schematic_1 Member=Component VIT2 1
+Added Member To Class: ClassName=FishTalk_Schematic_1 Member=Component VIT4 1

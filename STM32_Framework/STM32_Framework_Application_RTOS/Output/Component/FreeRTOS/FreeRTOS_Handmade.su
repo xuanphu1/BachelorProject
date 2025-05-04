@@ -1,0 +1,8 @@
+Component/FreeRTOS/FreeRTOS_Handmade.c:8:6:Task_End	0	static
+Component/FreeRTOS/FreeRTOS_Handmade.c:16:6:Task_Idle	8	static
+Component/FreeRTOS/FreeRTOS_Handmade.c:24:10:Task_Create	24	static
+Component/FreeRTOS/FreeRTOS_Handmade.c:52:6:Task_Begin	8	static
+Component/FreeRTOS/FreeRTOS_Handmade.c:76:6:Task_Delete	16	static
+Component/FreeRTOS/FreeRTOS_Handmade.c:90:14:Task_GetCurrentCPU	0	static
+Component/FreeRTOS/FreeRTOS_Handmade.c:97:14:Task_GetNextCPU	8	static
+Component/FreeRTOS/FreeRTOS_Handmade.c:126:6:Task_Delay	0	static
